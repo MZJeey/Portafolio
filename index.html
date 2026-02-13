@@ -1,533 +1,788 @@
-<!DOCTYPE html>
+<!doctype html>
 
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
 
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-<html class="light" lang="en"><head>
+    <title>Portfolio Home &amp; Projects</title>
 
-<meta charset="utf-8"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
 
-<title>Portfolio Home &amp; Projects</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
 
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
 
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
 
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
 
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0da6f2",
 
-<script id="tailwind-config">
+              "background-light": "#f5f7f8",
 
-        tailwind.config = {
-
-            darkMode: "class",
-
-            theme: {
-
-                extend: {
-
-                    colors: {
-
-                        "primary": "#0da6f2",
-
-                        "background-light": "#f5f7f8",
-
-                        "background-dark": "#101c22",
-
-                    },
-
-                    fontFamily: {
-
-                        "display": ["Manrope", "sans-serif"]
-
-                    },
-
-                    borderRadius: {
-
-                        "DEFAULT": "0.25rem",
-
-                        "lg": "0.5rem",
-
-                        "xl": "0.75rem",
-
-                        "full": "9999px"
-
-                    },
-
-                },
-
+              "background-dark": "#101c22",
             },
 
-        }
+            fontFamily: {
+              display: ["Manrope", "sans-serif"],
+            },
 
+            borderRadius: {
+              DEFAULT: "0.25rem",
+
+              lg: "0.5rem",
+
+              xl: "0.75rem",
+
+              full: "9999px",
+            },
+          },
+        },
+      };
     </script>
 
-<style>
+    <style>
+      body {
+        font-family: "Manrope", sans-serif;
+      }
 
-        body {
+      html {
+        scroll-behavior: smooth;
+      }
 
-            font-family: 'Manrope', sans-serif;
+      /* Offset for sticky header when navigating to anchors */
+      section[id] {
+        scroll-margin-top: 96px;
+      }
 
-        }
+      /* === CONTACT INFO (EDIT HERE) === */
+      :root {
+        --contact-email: "jasonezezel@gmail.com";
+        /* WhatsApp must be digits only, with country code. Example Peru: 51999999999 */
+        --contact-whatsapp: "50671795695";
+      }
 
-        html {
-            scroll-behavior: smooth;
-        }
+      .sticky-nav {
+        position: sticky;
 
-        /* Offset for sticky header when navigating to anchors */
-        section[id] {
-            scroll-margin-top: 96px;
-        }
+        top: 0;
 
-        /* === CONTACT INFO (EDIT HERE) === */
-        :root {
-            --contact-email: "tuemail@ejemplo.com";
-            /* WhatsApp must be digits only, with country code. Example Peru: 51999999999 */
-            --contact-whatsapp: "51999999999";
-        }
+        z-index: 50;
 
-        .sticky-nav {
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 50;
-
-            backdrop-filter: blur(8px);
-
-        }
-
+        backdrop-filter: blur(8px);
+      }
     </style>
-
-</head>
-
-<body class="bg-background-light dark:bg-background-dark text-[#111618] dark:text-white font-display">
-
-<!-- Top Navigation Bar -->
-
-<header class="sticky-nav border-b border-solid border-[#f0f3f5] dark:border-[#2a3a42] bg-background-light/80 dark:bg-background-dark/80 px-6 md:px-20 lg:px-40 py-4">
-
-<div class="max-w-[1200px] mx-auto flex items-center justify-between">
-
-<div class="flex items-center gap-3">
-
-<div class="text-primary">
-
-<span class="material-symbols-outlined text-3xl font-bold">rocket_launch</span>
-
-</div>
-
-<h2 class="text-[#111618] dark:text-white text-xl font-extrabold tracking-tight">Jeeyson.UI</h2>
-
-</div>
-
-<div class="flex items-center gap-8">
-
-<nav class="hidden md:flex items-center gap-8">
-
-<a class="text-[#111618] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" href="#home">Home</a>
-
-<a class="text-[#111618] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" href="#projects">Projects</a>
-
-<a class="text-[#111618] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" href="#about">About</a>
-
-<a class="text-[#111618] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" href="#contact">Contact</a>
-
-</nav>
-
-<a href="#contact" class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold transition-transform hover:scale-105 active:scale-95">
-
-<span>Hire Me</span>
-
-</a>
-
-</div>
-
-</div>
-
-</header>
-
-<main class="flex flex-col items-center">
-
-<!-- Hero Section -->
-
-<section id="home" class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 pt-16 pb-20">
-
-<div class="@container">
-
-<div class="flex flex-col gap-10 @[864px]:flex-row @[864px]:items-center">
-
-<div class="flex flex-col gap-8 flex-1">
-
-<div class="flex flex-col gap-4">
-
-<span class="text-primary font-bold tracking-widest text-sm uppercase">Creative Developer</span>
-
-<h1 class="text-[#111618] dark:text-white text-5xl font-extrabold leading-[1.1] tracking-[-0.04em] @[480px]:text-6xl">
-
-                                Hi, I'm Jeeyson. I build <span class="text-primary">digital experiences</span> that matter.
-
-                            </h1>
-
-<p class="text-[#607c8a] dark:text-gray-400 text-lg font-medium leading-relaxed max-w-[500px]">
-
-                                I specialize in crafting high-performance, modern web applications with a focus on clean aesthetics and intuitive user interactions.
-
-                            </p>
-
-</div>
-
-<div class="flex gap-4">
-
-<a href="#projects" class="flex min-w-[140px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-base font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all">
-
-<span>View My Work</span>
-
-</a>
-
-<button class="flex min-w-[140px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white dark:bg-[#1c2a31] border border-[#dce4e8] dark:border-[#2a3a42] text-[#111618] dark:text-white text-base font-bold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">
-
-<span>Resume</span>
-
-</button>
-
-</div>
-
-</div>
-
-<div class="w-full @[864px]:w-[45%] flex justify-center">
-
-<div class="relative w-full aspect-square max-w-[450px]">
-
-<div class="absolute inset-0 bg-primary/10 rounded-3xl rotate-6"></div>
-
-<div class="absolute inset-0 bg-primary/5 rounded-3xl -rotate-3"></div>
-
-<div class="relative w-full h-full bg-center bg-no-repeat bg-cover rounded-3xl shadow-2xl overflow-hidden border-4 border-white dark:border-[#1c2a31]" data-alt="Modern abstract 3D geometric shapes with blue accents" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAopHnQZKa5vd9nzrxEaj5hqM3jE6u8xWuALm_HsflRKnYSgc6-ReaZIWJKaBClMm_kgbDruYoag-QDsW9SskcSSE4PxM9V02Ldp18KFHvEXuWWTCSemI1Zg4fqrCc6GzQyVWEalW3n_ny_704LKgMkuPbchdMpQOVWhDl7N-vC2YE5Z0kTlGioxaL6gZcSBsulcQDdBsLnzHRfwDOeRUIRlNFHK9mmKlzFCJ2RRFjDj0Ci7_Ng9Uq8d2stY60Y2R-Dl9aHt2Jt1qs");'>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- Featured Projects Header -->
-
-<section id="projects" class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 pt-10">
-
-<div class="flex items-end justify-between border-b border-[#f0f3f5] dark:border-[#2a3a42] pb-6">
-
-<div>
-
-<h2 class="text-[#111618] dark:text-white text-3xl font-extrabold tracking-tight">Featured Projects</h2>
-
-<p class="text-[#607c8a] dark:text-gray-400 mt-2">A selection of my recent work in design and development.</p>
-
-</div>
-
-<a class="text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all" href="#projects">
-
-                    View All <span class="material-symbols-outlined">arrow_forward</span>
-
-</a>
-
-</div>
-
-</section>
-
-<!-- Project Grid -->
-
-<section class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 py-10">
-
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-<!-- Project 1 -->
-
-<div class="group flex flex-col gap-5">
-
-<a href="https://goldfishing.netlify.app/" target="_blank" rel="noopener noreferrer" class="relative w-full aspect-[4/3] bg-center bg-no-repeat bg-cover rounded-2xl overflow-hidden shadow-sm transition-all group-hover:shadow-xl group-hover:-translate-y-1" data-alt="Gold Fishing - E-commerce de pesca" style='background-image: url("img/Golfish.png");'>
-
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-
-<span class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg">View Case Study</span>
-
-</div>
-
-</a>
-
-<div class="flex flex-col gap-2">
-
-<span class="text-primary text-xs font-bold uppercase tracking-widest">Web Application</span>
-
-<h3 class="text-[#111618] dark:text-white text-xl font-bold">Fintech Dashboard</h3>
-
-<p class="text-[#607c8a] dark:text-gray-400 text-sm font-medium leading-relaxed">
-
-                            A data-driven UI designed for modern banking, focusing on real-time analytics and user accessibility.
-
-                        </p>
-
-<a class="text-primary text-sm font-bold mt-2 flex items-center gap-1" href="https://goldfishing.netlify.app/" target="_blank" rel="noopener noreferrer">
-
-                            Explore Project <span class="material-symbols-outlined text-sm">open_in_new</span>
-
-</a>
-
-</div>
-
-</div>
-
-<!-- Project 2 -->
-
-<div class="group flex flex-col gap-5">
-
-<a href="https://gregarious-jalebi-602383.netlify.app/" target="_blank" rel="noopener noreferrer" class="relative w-full aspect-[4/3] bg-center bg-no-repeat bg-cover rounded-2xl overflow-hidden shadow-sm transition-all group-hover:shadow-xl group-hover:-translate-y-1" data-alt="Techno & EDM Festival - Festival de música electrónica" style='background-image: url("img/FestivalMusica.png");'>
-
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-
-<span class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg">View Case Study</span>
-
-</div>
-
-</a>
-
-<div class="flex flex-col gap-2">
-
-<span class="text-primary text-xs font-bold uppercase tracking-widest">Mobile UI/UX</span>
-
-<h3 class="text-[#111618] dark:text-white text-xl font-bold">E-commerce Redesign</h3>
-
-<p class="text-[#607c8a] dark:text-gray-400 text-sm font-medium leading-relaxed">
-
-                            Improving conversion rates through minimalist UX and lightning-fast checkout experiences.
-
-                        </p>
-
-<a class="text-primary text-sm font-bold mt-2 flex items-center gap-1" href="https://gregarious-jalebi-602383.netlify.app/" target="_blank" rel="noopener noreferrer">
-
-                            Explore Project <span class="material-symbols-outlined text-sm">open_in_new</span>
-
-</a>
-
-</div>
-
-</div>
-
-<!-- Project 3 -->
-
-<div class="group flex flex-col gap-5">
-
-<a href="https://pasentry.netlify.app/sugerir-empresa" target="_blank" rel="noopener noreferrer" class="relative w-full aspect-[4/3] bg-center bg-no-repeat bg-cover rounded-2xl overflow-hidden shadow-sm transition-all group-hover:shadow-xl group-hover:-translate-y-1" data-alt="Pasentry - Sugiere una Empresa" style='background-image: url("img/Pasentry.png"), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3lkDrmI8LCuEyKfNh3sPvonBEGdiENGpBI2zUbWG9xrbgXayEqE80bSSFNEe1hsZWLYasJQBBcBArokSyKUNVX4EMWMqoQrnBldJSWnxfDjq6lYA4JgOFc2hFHhe8JmvqHzggSHiJ2XGBFsa7oqKo0HAqFcvDVwmjUjdFLELaGvYlAJDasbXQAuGTij46YWcfrbn-NQki1FzLZrf3KHFdNqX1dauFbGX4mBLSmcozjryGD1TMccud6eqNjJ8hw2tnMHlWmXMmVSs");'>
-
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-
-<span class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg">View Case Study</span>
-
-</div>
-
-</a>
-
-<div class="flex flex-col gap-2">
-
-<span class="text-primary text-xs font-bold uppercase tracking-widest">SaaS Platform</span>
-
-<h3 class="text-[#111618] dark:text-white text-xl font-bold">AI Writing Assistant</h3>
-
-<p class="text-[#607c8a] dark:text-gray-400 text-sm font-medium leading-relaxed">
-
-                            A powerful SaaS platform helping content creators generate ideas and polish their writing styles.
-
-                        </p>
-
-<a class="text-primary text-sm font-bold mt-2 flex items-center gap-1" href="https://pasentry.netlify.app/sugerir-empresa" target="_blank" rel="noopener noreferrer">
-
-                            Explore Project <span class="material-symbols-outlined text-sm">open_in_new</span>
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- About Section -->
-<section id="about" class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 py-16">
-<div class="bg-white dark:bg-[#0c1418] border border-[#f0f3f5] dark:border-[#2a3a42] rounded-3xl p-8 md:p-12">
-<div class="flex flex-col gap-4 max-w-[800px]">
-<h2 class="text-[#111618] dark:text-white text-3xl font-extrabold tracking-tight">About</h2>
-<p class="text-[#607c8a] dark:text-gray-400 text-base md:text-lg font-medium leading-relaxed">
-                        I’m a creative developer focused on building modern, high-performance web experiences with clean UI, thoughtful UX, and accessible interfaces.
-                    </p>
-<p class="text-[#607c8a] dark:text-gray-400 text-base md:text-lg font-medium leading-relaxed">
-                        Want to collaborate? Jump to the contact section and let’s talk about your project.
-                    </p>
-</div>
-</div>
-</section>
-
-<!-- CTA Section -->
-
-<section id="contact" class="w-full bg-white dark:bg-[#0c1418] py-20 mt-10">
-
-<div class="max-w-[1200px] mx-auto px-6 md:px-20 lg:px-40">
-
-<div class="bg-primary rounded-3xl p-10 md:p-16 flex flex-col items-center text-center gap-8 shadow-2xl shadow-primary/20 overflow-hidden relative">
-
-<!-- Background Decoration -->
-
-<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-
-<div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-64 h-64 bg-black/5 rounded-full blur-3xl"></div>
-
-<div class="relative z-10 flex flex-col gap-4">
-
-<h2 class="text-white text-4xl md:text-5xl font-black tracking-tight leading-tight">
-
-                            Interested in working together?
-
-                        </h2>
-
-<p class="text-white/90 text-lg md:text-xl font-medium max-w-[600px] mx-auto">
-
-                            I'm currently available for freelance work and full-time creative opportunities. Let's build something amazing.
-
-                        </p>
-
-</div>
-
-<div class="relative z-10 flex flex-wrap justify-center gap-4">
-
-<a id="contact-email-link" href="mailto:tuemail@ejemplo.com?subject=Trabajo%20freelance%20/%20colaboraci%C3%B3n&body=Hola%20Jeeyson%2C%20me%20gustar%C3%ADa%20hablar%20sobre..." class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white text-primary text-lg font-extrabold hover:bg-gray-100 transition-all active:scale-95" target="_blank" rel="noopener noreferrer">
-
-<span>Email</span>
-
-</a>
-
-<a id="contact-whatsapp-link" href="https://wa.me/51999999999?text=Hola%20Jeeyson%2C%20quiero%20cotizar%20un%20proyecto." class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-transparent border-2 border-white/30 text-white text-lg font-bold hover:bg-white/10 transition-all" target="_blank" rel="noopener noreferrer">
-
-<span>WhatsApp</span>
-
-</a>
-
-</div>
-
-<div class="relative z-10 w-full max-w-[760px]">
-<div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-<div class="bg-white/10 border border-white/15 rounded-2xl p-5 backdrop-blur">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-white/90">alternate_email</span>
-<div class="flex flex-col">
-<span class="text-white/80 text-xs font-bold tracking-widest uppercase">Email</span>
-<a id="contact-email-text" class="text-white font-extrabold hover:underline break-all" href="mailto:tuemail@ejemplo.com">tuemail@ejemplo.com</a>
-</div>
-</div>
-</div>
-<div class="bg-white/10 border border-white/15 rounded-2xl p-5 backdrop-blur">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-white/90">chat</span>
-<div class="flex flex-col">
-<span class="text-white/80 text-xs font-bold tracking-widest uppercase">WhatsApp</span>
-<a id="contact-whatsapp-text" class="text-white font-extrabold hover:underline" href="https://wa.me/51999999999" target="_blank" rel="noopener noreferrer">+51 999 999 999</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- Footer -->
-
-<footer class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 py-12 flex flex-col md:flex-row items-center justify-between gap-8 border-t border-[#f0f3f5] dark:border-[#2a3a42] mt-10">
-
-<div class="flex items-center gap-3">
-
-<div class="size-8 bg-primary rounded-lg flex items-center justify-center">
-
-<span class="material-symbols-outlined text-white text-xl">rocket_launch</span>
-
-</div>
-
-<span class="text-[#111618] dark:text-white font-bold">Jeeyson.UI</span>
-
-</div>
-
-<p class="text-[#607c8a] dark:text-gray-400 text-sm font-medium">
-
-                © 2026 Jeeyson UI. Designed with passion for the digital age.
-
+  </head>
+
+  <body
+    class="bg-background-light dark:bg-background-dark text-[#111618] dark:text-white font-display"
+  >
+    <!-- Top Navigation Bar -->
+
+    <header
+      class="sticky-nav border-b border-solid border-[#f0f3f5] dark:border-[#2a3a42] bg-background-light/80 dark:bg-background-dark/80 px-6 md:px-20 lg:px-40 py-4"
+    >
+      <div class="max-w-[1200px] mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="text-primary">
+            <span class="material-symbols-outlined text-3xl font-bold"
+              >rocket_launch</span
+            >
+          </div>
+
+          <h2
+            class="text-[#111618] dark:text-white text-xl font-extrabold tracking-tight"
+          >
+            Jeeyson.UI
+          </h2>
+        </div>
+
+        <div class="flex items-center gap-8">
+          <nav class="hidden md:flex items-center gap-8">
+            <a
+              class="text-[#111618] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="#home"
+              data-i18n="nav_home"
+              >Home</a
+            >
+
+            <a
+              class="text-[#111618] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="#projects"
+              data-i18n="nav_projects"
+              >Projects</a
+            >
+
+            <a
+              class="text-[#111618] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="#about"
+              data-i18n="nav_about"
+              >About</a
+            >
+
+            <a
+              class="text-[#111618] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors"
+              href="#contact"
+              data-i18n="nav_contact"
+              >Contact</a
+            >
+          </nav>
+
+          <a
+            href="#contact"
+            class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold transition-transform hover:scale-105 active:scale-95"
+          >
+            <span data-i18n="hire_me">Hire Me</span>
+          </a>
+
+          <!-- Language Switcher -->
+          <button
+            id="lang-switcher"
+            class="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-[#1c2a31] text-[#111618] dark:text-white text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-all"
+          >
+            <i class="bi bi-globe2"></i>
+            <span id="current-lang">ES</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex flex-col items-center">
+      <!-- Hero Section -->
+
+      <section
+        id="home"
+        class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 pt-16 pb-20"
+      >
+        <div class="@container">
+          <div
+            class="flex flex-col gap-10 @[864px]:flex-row @[864px]:items-center"
+          >
+            <div class="flex flex-col gap-8 flex-1">
+              <div class="flex flex-col gap-4">
+                <span
+                  class="text-primary font-bold tracking-widest text-sm uppercase"
+                  data-i18n="hero_tagline"
+                  >Creative Developer</span
+                >
+
+                <h1
+                  class="text-[#111618] dark:text-white text-5xl font-extrabold leading-[1.1] tracking-[-0.04em] @[480px]:text-6xl"
+                >
+                  <span data-i18n="hero_title">Hi, I'm Jeeyson. I build</span>
+                  <span class="text-primary" data-i18n="hero_title_highlight"
+                    >digital experiences</span
+                  >
+                  <span data-i18n="hero_title_end">that matter.</span>
+                </h1>
+
+                <p
+                  class="text-[#607c8a] dark:text-gray-400 text-lg font-medium leading-relaxed max-w-[500px]"
+                  data-i18n="hero_description"
+                >
+                  I specialize in crafting high-performance, modern web
+                  applications with a focus on clean aesthetics and intuitive
+                  user interactions.
+                </p>
+              </div>
+
+              <div class="flex gap-4">
+                <a
+                  href="#projects"
+                  class="flex min-w-[140px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-base font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all"
+                >
+                  <span data-i18n="view_work">View My Work</span>
+                </a>
+
+                <button
+                  class="flex min-w-[140px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white dark:bg-[#1c2a31] border border-[#dce4e8] dark:border-[#2a3a42] text-[#111618] dark:text-white text-base font-bold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all"
+                >
+                  <span data-i18n="resume">Resume</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="w-full @[864px]:w-[45%] flex justify-center">
+              <div class="relative w-full aspect-square max-w-[450px]">
+                <div
+                  class="absolute inset-0 bg-primary/10 rounded-3xl rotate-6"
+                ></div>
+
+                <div
+                  class="absolute inset-0 bg-primary/5 rounded-3xl -rotate-3"
+                ></div>
+
+                <div
+                  class="relative w-full h-full bg-center bg-no-repeat bg-cover rounded-3xl shadow-2xl overflow-hidden border-4 border-white dark:border-[#1c2a31]"
+                  data-alt="Modern abstract 3D geometric shapes with blue accents"
+                  style="
+                    background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAopHnQZKa5vd9nzrxEaj5hqM3jE6u8xWuALm_HsflRKnYSgc6-ReaZIWJKaBClMm_kgbDruYoag-QDsW9SskcSSE4PxM9V02Ldp18KFHvEXuWWTCSemI1Zg4fqrCc6GzQyVWEalW3n_ny_704LKgMkuPbchdMpQOVWhDl7N-vC2YE5Z0kTlGioxaL6gZcSBsulcQDdBsLnzHRfwDOeRUIRlNFHK9mmKlzFCJ2RRFjDj0Ci7_Ng9Uq8d2stY60Y2R-Dl9aHt2Jt1qs&quot;);
+                  "
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Projects Header -->
+
+      <section
+        id="projects"
+        class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 pt-10"
+      >
+        <div
+          class="flex items-end justify-between border-b border-[#f0f3f5] dark:border-[#2a3a42] pb-6"
+        >
+          <div>
+            <h2
+              class="text-[#111618] dark:text-white text-3xl font-extrabold tracking-tight"
+              data-i18n="featured_projects"
+            >
+              Featured Projects
+            </h2>
+
+            <p
+              class="text-[#607c8a] dark:text-gray-400 mt-2"
+              data-i18n="projects_subtitle"
+            >
+              A selection of my recent work in design and development.
             </p>
+          </div>
 
-<div class="flex gap-6">
+          <a
+            class="text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all"
+            href="#projects"
+          >
+            <span data-i18n="view_all">View All</span>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </a>
+        </div>
+      </section>
 
-<a class="text-[#607c8a] dark:text-gray-400 hover:text-primary transition-colors" href="#home">
+      <!-- Project Grid -->
 
-<span class="material-symbols-outlined">language</span>
+      <section class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1 -->
 
-</a>
+          <div class="group flex flex-col gap-5">
+            <a
+              href="https://goldfishing.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="relative w-full aspect-[4/3] bg-center bg-no-repeat bg-cover rounded-2xl overflow-hidden shadow-sm transition-all group-hover:shadow-xl group-hover:-translate-y-1"
+              data-alt="Gold Fishing - E-commerce de pesca"
+              style="background-image: url(&quot;img/Golfish.png&quot;)"
+            >
+              <div
+                class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <span
+                  class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg"
+                  data-i18n="view_case_study"
+                  >View Case Study</span
+                >
+              </div>
+            </a>
 
-<a class="text-[#607c8a] dark:text-gray-400 hover:text-primary transition-colors" href="mailto:tuemail@ejemplo.com" target="_blank" rel="noopener noreferrer">
+            <div class="flex flex-col gap-2">
+              <span
+                class="text-primary text-xs font-bold uppercase tracking-widest"
+                >E-commerce</span
+              >
 
-<span class="material-symbols-outlined">alternate_email</span>
+              <h3 class="text-[#111618] dark:text-white text-xl font-bold">
+                Gold Fishing
+              </h3>
 
-</a>
+              <p
+                class="text-[#607c8a] dark:text-gray-400 text-sm font-medium leading-relaxed"
+              >
+                E-commerce especializado en artículos de pesca con una
+                experiencia de compra moderna y intuitiva.
+              </p>
 
-<a class="text-[#607c8a] dark:text-gray-400 hover:text-primary transition-colors" href="https://wa.me/51999999999" target="_blank" rel="noopener noreferrer">
+              <a
+                class="text-primary text-sm font-bold mt-2 flex items-center gap-1"
+                href="https://goldfishing.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span data-i18n="explore_project">Explore Project</span>
+                <span class="material-symbols-outlined text-sm"
+                  >open_in_new</span
+                >
+              </a>
+            </div>
+          </div>
 
-<span class="material-symbols-outlined">chat</span>
+          <!-- Project 2 -->
 
-</a>
+          <div class="group flex flex-col gap-5">
+            <a
+              href="https://gregarious-jalebi-602383.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="relative w-full aspect-[4/3] bg-center bg-no-repeat bg-cover rounded-2xl overflow-hidden shadow-sm transition-all group-hover:shadow-xl group-hover:-translate-y-1"
+              data-alt="Techno & EDM Festival - Festival de música electrónica"
+              style="background-image: url(&quot;img/FestivalMusica.png&quot;)"
+            >
+              <div
+                class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <span
+                  class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg"
+                  data-i18n="view_case_study"
+                  >View Case Study</span
+                >
+              </div>
+            </a>
 
-</div>
+            <div class="flex flex-col gap-2">
+              <span
+                class="text-primary text-xs font-bold uppercase tracking-widest"
+                >Event Website</span
+              >
 
-</footer>
+              <h3 class="text-[#111618] dark:text-white text-xl font-bold">
+                Techno & EDM Festival
+              </h3>
 
-</main>
+              <p
+                class="text-[#607c8a] dark:text-gray-400 text-sm font-medium leading-relaxed"
+              >
+                Landing page para festival de música electrónica con diseño
+                vibrante y moderna experiencia de usuario.
+              </p>
 
-<script>
-  // Contact info single-source (edit these 2 values)
-  const CONTACT_EMAIL = "tuemail@ejemplo.com";
-  // Digits only + country code (example Peru: 51999999999)
-  const CONTACT_WHATSAPP = "51999999999";
+              <a
+                class="text-primary text-sm font-bold mt-2 flex items-center gap-1"
+                href="https://gregarious-jalebi-602383.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Explore Project
+                <span class="material-symbols-outlined text-sm"
+                  >open_in_new</span
+                >
+              </a>
+            </div>
+          </div>
 
-  const emailMailto = `mailto:${encodeURIComponent(CONTACT_EMAIL)}?subject=${encodeURIComponent("Trabajo freelance / colaboración")}&body=${encodeURIComponent("Hola Jeeyson, me gustaría hablar sobre...")}`;
-  const whatsappDeepLink = `https://wa.me/${CONTACT_WHATSAPP}?text=${encodeURIComponent("Hola Jeeyson, quiero cotizar un proyecto.")}`;
-  const whatsappPlain = `https://wa.me/${CONTACT_WHATSAPP}`;
+          <!-- Project 3 -->
 
-  const emailLink = document.getElementById("contact-email-link");
-  const emailText = document.getElementById("contact-email-text");
-  if (emailLink) emailLink.href = emailMailto;
-  if (emailText) {
-    emailText.href = `mailto:${CONTACT_EMAIL}`;
-    emailText.textContent = CONTACT_EMAIL;
-  }
+          <div class="group flex flex-col gap-5">
+            <a
+              href="https://pasentry.netlify.app/sugerir-empresa"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="relative w-full aspect-[4/3] bg-center bg-no-repeat bg-cover rounded-2xl overflow-hidden shadow-sm transition-all group-hover:shadow-xl group-hover:-translate-y-1"
+              data-alt="Pasentry - Sugiere una Empresa"
+              style="
+                background-image:
+                  url(&quot;img/Pasentry.png&quot;),
+                  url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuA3lkDrmI8LCuEyKfNh3sPvonBEGdiENGpBI2zUbWG9xrbgXayEqE80bSSFNEe1hsZWLYasJQBBcBArokSyKUNVX4EMWMqoQrnBldJSWnxfDjq6lYA4JgOFc2hFHhe8JmvqHzggSHiJ2XGBFsa7oqKo0HAqFcvDVwmjUjdFLELaGvYlAJDasbXQAuGTij46YWcfrbn-NQki1FzLZrf3KHFdNqX1dauFbGX4mBLSmcozjryGD1TMccud6eqNjJ8hw2tnMHlWmXMmVSs&quot;);
+              "
+            >
+              <div
+                class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+              >
+                <span
+                  class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg"
+                  >View Case Study</span
+                >
+              </div>
+            </a>
 
-  const waLink = document.getElementById("contact-whatsapp-link");
-  const waText = document.getElementById("contact-whatsapp-text");
-  if (waLink) waLink.href = whatsappDeepLink;
-  if (waText) waText.href = whatsappPlain;
+            <div class="flex flex-col gap-2">
+              <span
+                class="text-primary text-xs font-bold uppercase tracking-widest"
+                >SaaS Platform</span
+              >
 
-  // Footer quick links (optional)
-  const footerMail = document.querySelector('footer a[href^="mailto:"]');
-  if (footerMail) footerMail.href = `mailto:${CONTACT_EMAIL}`;
-  const footerWa = document.querySelector('footer a[href^="https://wa.me/"]');
-  if (footerWa) footerWa.href = whatsappPlain;
-</script>
+              <h3 class="text-[#111618] dark:text-white text-xl font-bold">
+                Pasentry
+              </h3>
 
-</body></html>
+              <p
+                class="text-[#607c8a] dark:text-gray-400 text-sm font-medium leading-relaxed"
+              >
+                Plataforma SaaS que permite a usuarios sugerir empresas para
+                crearelistados en el directorio.
+              </p>
+
+              <a
+                class="text-primary text-sm font-bold mt-2 flex items-center gap-1"
+                href="https://pasentry.netlify.app/sugerir-empresa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Explore Project
+                <span class="material-symbols-outlined text-sm"
+                  >open_in_new</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section
+        id="about"
+        class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 py-16"
+      >
+        <div
+          class="bg-white dark:bg-[#0c1418] border border-[#f0f3f5] dark:border-[#2a3a42] rounded-3xl p-8 md:p-12"
+        >
+          <div class="flex flex-col gap-4 max-w-[800px]">
+            <h2
+              class="text-[#111618] dark:text-white text-3xl font-extrabold tracking-tight"
+              data-i18n="about_title"
+            >
+              About
+            </h2>
+            <p
+              class="text-[#607c8a] dark:text-gray-400 text-base md:text-lg font-medium leading-relaxed"
+            >
+              I’m a creative developer focused on building modern,
+              high-performance web experiences with clean UI, thoughtful UX, and
+              accessible interfaces.
+            </p>
+            <p
+              class="text-[#607c8a] dark:text-gray-400 text-base md:text-lg font-medium leading-relaxed"
+            >
+              Want to collaborate? Jump to the contact section and let’s talk
+              about your project.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+
+      <section
+        id="contact"
+        class="w-full bg-white dark:bg-[#0c1418] py-20 mt-10"
+      >
+        <div class="max-w-[1200px] mx-auto px-6 md:px-20 lg:px-40">
+          <div
+            class="bg-primary rounded-3xl p-10 md:p-16 flex flex-col items-center text-center gap-8 shadow-2xl shadow-primary/20 overflow-hidden relative"
+          >
+            <!-- Background Decoration -->
+
+            <div
+              class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-64 h-64 bg-white/10 rounded-full blur-3xl"
+            ></div>
+
+            <div
+              class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-64 h-64 bg-black/5 rounded-full blur-3xl"
+            ></div>
+
+            <div class="relative z-10 flex flex-col gap-4">
+              <h2
+                class="text-white text-4xl md:text-5xl font-black tracking-tight leading-tight"
+              >
+                Interested in working together?
+              </h2>
+
+              <p
+                class="text-white/90 text-lg md:text-xl font-medium max-w-[600px] mx-auto"
+              >
+                I'm currently available for freelance work and full-time
+                creative opportunities. Let's build something amazing.
+              </p>
+            </div>
+
+            <div class="relative z-10 flex flex-wrap justify-center gap-4">
+              <a
+                id="contact-email-link"
+                href="mailto:jasonezezel@gmail.com?subject=Trabajo%20freelance%20/%20colaboraci%C3%B3n&body=Hola%20Jeeyson%2C%20me%20gustar%C3%ADa%20hablar%20sobre..."
+                class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white text-primary text-lg font-extrabold hover:bg-gray-100 transition-all active:scale-95"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>Email</span>
+              </a>
+
+              <a
+                id="contact-whatsapp-link"
+                href="https://wa.me/50671795695?text=Hola%20Jeeyson%2C%20quiero%20cotizar%20un%20proyecto."
+                class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-transparent border-2 border-white/30 text-white text-lg font-bold hover:bg-white/10 transition-all"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>WhatsApp</span>
+              </a>
+            </div>
+
+            <div class="relative z-10 w-full max-w-[760px]">
+              <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+                <div
+                  class="bg-white/10 border border-white/15 rounded-2xl p-5 backdrop-blur"
+                >
+                  <div class="flex items-center gap-3">
+                    <i class="bi bi-envelope text-white/90 text-xl"></i>
+                    <div class="flex flex-col">
+                      <span
+                        class="text-white/80 text-xs font-bold tracking-widest uppercase"
+                        >Email</span
+                      >
+                      <a
+                        id="contact-email-text"
+                        class="text-white font-extrabold hover:underline break-all"
+                        href="mailto:jasonezezel@gmail.com"
+                        >jasonezezel@gmail.com</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="bg-white/10 border border-white/15 rounded-2xl p-5 backdrop-blur"
+                >
+                  <div class="flex items-center gap-3">
+                    <i class="bi bi-whatsapp text-white/90 text-xl"></i>
+                    <div class="flex flex-col">
+                      <span
+                        class="text-white/80 text-xs font-bold tracking-widest uppercase"
+                        >WhatsApp</span
+                      >
+                      <a
+                        id="contact-whatsapp-text"
+                        class="text-white font-extrabold hover:underline"
+                        href="https://wa.me/50671795695"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >+506 7179 5695</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+
+      <footer
+        class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 py-12 flex flex-col md:flex-row items-center justify-between gap-8 border-t border-[#f0f3f5] dark:border-[#2a3a42] mt-10"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="size-8 bg-primary rounded-lg flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined text-white text-xl"
+              >rocket_launch</span
+            >
+          </div>
+
+          <span class="text-[#111618] dark:text-white font-bold"
+            >Jeeyson.UI</span
+          >
+        </div>
+
+        <p class="text-[#607c8a] dark:text-gray-400 text-sm font-medium">
+          © 2026 Jeeyson UI. Designed with passion for the digital age.
+        </p>
+
+        <div class="flex gap-6">
+          <a
+            class="text-[#607c8a] dark:text-gray-400 hover:text-primary transition-colors"
+            href="#home"
+          >
+            <span class="material-symbols-outlined">language</span>
+          </a>
+
+          <a
+            class="text-[#607c8a] dark:text-gray-400 hover:text-primary transition-colors"
+            href="mailto:jasonezezel@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="material-symbols-outlined">alternate_email</span>
+          </a>
+
+          <a
+            class="text-[#607c8a] dark:text-gray-400 hover:text-primary transition-colors"
+            href="https://wa.me/50671795695"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="material-symbols-outlined">logo_whatsapp</span>
+          </a>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      // Contact info single-source (edit these 2 values)
+      const CONTACT_EMAIL = "jasonezezel@gmail.com";
+      // Digits only + country code (example Peru: 51999999999)
+      const CONTACT_WHATSAPP = "50671795695";
+
+      const emailMailto = `mailto:${encodeURIComponent(CONTACT_EMAIL)}?subject=${encodeURIComponent("Trabajo freelance / colaboración")}&body=${encodeURIComponent("Hola Jeeyson, me gustaría hablar sobre...")}`;
+      const whatsappDeepLink = `https://wa.me/${CONTACT_WHATSAPP}?text=${encodeURIComponent("Hola Jeeyson, quiero cotizar un proyecto.")}`;
+      const whatsappPlain = `https://wa.me/${CONTACT_WHATSAPP}`;
+
+      const emailLink = document.getElementById("contact-email-link");
+      const emailText = document.getElementById("contact-email-text");
+      if (emailLink) emailLink.href = emailMailto;
+      if (emailText) {
+        emailText.href = `mailto:${CONTACT_EMAIL}`;
+        emailText.textContent = CONTACT_EMAIL;
+      }
+
+      const waLink = document.getElementById("contact-whatsapp-link");
+      const waText = document.getElementById("contact-whatsapp-text");
+      if (waLink) waLink.href = whatsappDeepLink;
+      if (waText) waText.href = whatsappPlain;
+
+      // Footer quick links (optional)
+      const footerMail = document.querySelector('footer a[href^="mailto:"]');
+      if (footerMail) footerMail.href = `mailto:${CONTACT_EMAIL}`;
+      const footerWa = document.querySelector(
+        'footer a[href^="https://wa.me/"]',
+      );
+      if (footerWa) footerWa.href = whatsappPlain;
+
+      // Language translations
+      const translations = {
+        en: {
+          nav_home: "Home",
+          nav_projects: "Projects",
+          nav_about: "About",
+          nav_contact: "Contact",
+          hire_me: "Hire Me",
+          hero_tagline: "Creative Developer",
+          hero_title: "Hi, I'm Jeeyson. I build",
+          hero_title_highlight: "digital experiences",
+          hero_title_end: "that matter.",
+          hero_description:
+            "I specialize in crafting high-performance, modern web applications with a focus on clean aesthetics and intuitive user interactions.",
+          view_work: "View My Work",
+          resume: "Resume",
+          featured_projects: "Featured Projects",
+          projects_subtitle:
+            "A selection of my recent work in design and development.",
+          view_all: "View All",
+          view_case_study: "View Case Study",
+          explore_project: "Explore Project",
+          about_title: "About",
+          about_text1:
+            "I'm a creative developer focused on building modern, high-performance web experiences with clean UI, thoughtful UX, and accessible interfaces.",
+          about_text2:
+            "Want to collaborate? Jump to the contact section and let's talk about your project.",
+          cta_title: "Interested in working together?",
+          cta_description:
+            "I'm currently available for freelance work and full-time creative opportunities. Let's build something amazing.",
+          btn_email: "Email",
+          btn_whatsapp: "WhatsApp",
+          label_email: "Email",
+          label_whatsapp: "WhatsApp",
+        },
+        es: {
+          nav_home: "Inicio",
+          nav_projects: "Proyectos",
+          nav_about: "Sobre Mí",
+          nav_contact: "Contacto",
+          hire_me: "Contrátame",
+          hero_tagline: "Desarrollador Creativo",
+          hero_title: "Hola, soy Jeeyson. Construyo",
+          hero_title_highlight: "experiencias digitales",
+          hero_title_end: "que importan.",
+          hero_description:
+            "Me especializo en crear aplicaciones web modernas y de alto rendimiento con un enfoque en estética limpia e interacciones de usuario intuitivas.",
+          view_work: "Ver Mi Trabajo",
+          resume: "Currículum",
+          featured_projects: "Proyectos Destacados",
+          projects_subtitle:
+            "Una selección de mi trabajo reciente en diseño y desarrollo.",
+          view_all: "Ver Todo",
+          view_case_study: "Ver Caso de Estudio",
+          explore_project: "Explorar Proyecto",
+          about_title: "Sobre Mí",
+          about_text1:
+            "Soy un desarrollador creativo enfocado en crear experiencias web modernas y de alto rendimiento con interfaces de usuario limpias, UX reflexivo y interfaces accesibles.",
+          about_text2:
+            "¿Quieres colaborar? Ve a la sección de contacto y hablemos de tu proyecto.",
+          cta_title: "¿Te interesa trabajar juntos?",
+          cta_description:
+            "Actualmente estoy disponible para trabajos freelance y oportunidades creativas a tiempo completo. Construyamos algo increíble.",
+          btn_email: "Correo",
+          btn_whatsapp: "WhatsApp",
+          label_email: "Correo",
+          label_whatsapp: "WhatsApp",
+        },
+      };
+
+      let currentLang = "en";
+
+      function setLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+
+        // Update all translatable elements
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (translations[lang] && translations[lang][key]) {
+            el.textContent = translations[lang][key];
+          }
+        });
+
+        // Update language switcher button
+        const langBtn = document.getElementById("current-lang");
+        if (langBtn) {
+          langBtn.textContent = lang.toUpperCase();
+        }
+
+        // Save preference
+        localStorage.setItem("preferredLang", lang);
+      }
+
+      // Language switcher click handler
+      const langSwitcher = document.getElementById("lang-switcher");
+      if (langSwitcher) {
+        langSwitcher.addEventListener("click", () => {
+          const newLang = currentLang === "en" ? "es" : "en";
+          setLanguage(newLang);
+        });
+      }
+
+      // Initialize language from localStorage or default to English
+      const savedLang = localStorage.getItem("preferredLang");
+      if (savedLang && translations[savedLang]) {
+        setLanguage(savedLang);
+      } else {
+        // Try to detect browser language
+        const browserLang = navigator.language.slice(0, 2);
+        if (translations[browserLang]) {
+          setLanguage(browserLang);
+        }
+      }
+    </script>
+  </body>
+</html>
