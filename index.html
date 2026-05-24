@@ -1,788 +1,1405 @@
 <!doctype html>
-
 <html class="light" lang="en">
   <head>
     <meta charset="utf-8" />
-
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-
-    <title>Portfolio Home &amp; Projects</title>
-
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jeeyson — Software Engineer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
-
-    <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-
-        theme: {
-          extend: {
-            colors: {
-              primary: "#0da6f2",
-
-              "background-light": "#f5f7f8",
-
-              "background-dark": "#101c22",
-            },
-
-            fontFamily: {
-              display: ["Manrope", "sans-serif"],
-            },
-
-            borderRadius: {
-              DEFAULT: "0.25rem",
-
-              lg: "0.5rem",
-
-              xl: "0.75rem",
-
-              full: "9999px",
-            },
-          },
-        },
-      };
-    </script>
-
     <style>
-      body {
-        font-family: "Manrope", sans-serif;
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-
       html {
         scroll-behavior: smooth;
       }
-
-      /* Offset for sticky header when navigating to anchors */
       section[id] {
-        scroll-margin-top: 96px;
+        scroll-margin-top: 70px;
       }
-
-      /* === CONTACT INFO (EDIT HERE) === */
       :root {
-        --contact-email: "jasonezezel@gmail.com";
-        /* WhatsApp must be digits only, with country code. Example Peru: 51999999999 */
-        --contact-whatsapp: "50671795695";
+        --bg: #f4f6f9;
+        --surface: #ffffff;
+        --surface2: #eef1f5;
+        --border: #e1e5eb;
+        --text: #0d1117;
+        --muted: #5a6678;
+        --accent: #0969da;
+        --accent2: #0550ae;
+        --tag-bg: #dbeafe;
+        --tag-text: #1e40af;
+        --mono: "Space Mono", monospace;
+        --sans: "Plus Jakarta Sans", sans-serif;
+      }
+      body {
+        font-family: var(--sans);
+        background: var(--bg);
+        color: var(--text);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
       }
 
-      .sticky-nav {
+      /* NAV */
+      nav {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 0 5%;
         position: sticky;
-
         top: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 62px;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+      }
+      .nav-logo-icon {
+        width: 33px;
+        height: 33px;
+        background: var(--accent);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 13px;
+        font-family: var(--mono);
+        font-weight: 700;
+      }
+      .nav-logo-text {
+        font-weight: 800;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .nav-links a {
+        font-size: 13px;
+        font-weight: 600;
+        padding: 6px 13px;
+        border-radius: 7px;
+        color: var(--muted);
+        transition: all 0.15s;
+      }
+      .nav-links a:hover {
+        color: var(--text);
+        background: var(--surface2);
+      }
+      .nav-btn {
+        background: var(--accent) !important;
+        color: #fff !important;
+        border-radius: 7px;
+      }
+      .nav-btn:hover {
+        background: var(--accent2) !important;
+      }
+      .lang-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--surface2);
+        border: none;
+        border-radius: 7px;
+        padding: 6px 13px;
+        font-size: 13px;
+        font-weight: 700;
+        font-family: var(--sans);
+        cursor: pointer;
+        color: var(--text);
+        transition: background 0.15s;
+        margin-left: 4px;
+      }
+      .lang-btn:hover {
+        background: var(--border);
+      }
 
-        z-index: 50;
+      /* HERO */
+      .hero {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 80px 5% 70px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--tag-bg);
+        color: var(--tag-text);
+        font-size: 11px;
+        font-weight: 700;
+        padding: 5px 13px;
+        border-radius: 100px;
+        letter-spacing: 0.6px;
+        margin-bottom: 22px;
+        text-transform: uppercase;
+      }
+      .hero-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+      h1 {
+        font-size: 44px;
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -1.5px;
+        color: var(--text);
+        margin-bottom: 18px;
+      }
+      h1 .accent {
+        color: var(--accent);
+      }
+      .hero-desc {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.75;
+        margin-bottom: 32px;
+        max-width: 440px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: #fff;
+        padding: 12px 26px;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        transition: background 0.15s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--sans);
+      }
+      .btn-primary:hover {
+        background: var(--accent2);
+      }
+      .btn-outline {
+        background: var(--surface);
+        color: var(--text);
+        padding: 12px 26px;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 14px;
+        border: 1.5px solid var(--border);
+        cursor: pointer;
+        transition: all 0.15s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--sans);
+      }
+      .btn-outline:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      /* Resume deshabilitado visualmente cuando no hay PDF */
+      .btn-outline.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: not-allowed;
+      }
+      .hero-avatar {
+        display: flex;
+        justify-content: center;
+      }
+      .avatar-frame {
+        width: 300px;
+        height: 300px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border: 1px solid var(--border);
+        overflow: hidden;
+      }
+      .avatar-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .avatar-initials {
+        font-family: var(--mono);
+        font-size: 64px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+      .avatar-dot {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #22c55e;
+        border: 2px solid #fff;
+      }
+      .hero-stats {
+        display: flex;
+        gap: 28px;
+      }
+      .stat {
+        display: flex;
+        flex-direction: column;
+      }
+      .stat-num {
+        font-family: var(--mono);
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text);
+      }
+      .stat-label {
+        font-size: 11px;
+        color: var(--muted);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+      }
 
-        backdrop-filter: blur(8px);
+      /* SECTIONS */
+      .section {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 55px 5%;
+      }
+      .section-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 32px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .section-title {
+        font-size: 21px;
+        font-weight: 800;
+        letter-spacing: -0.4px;
+      }
+      .section-sub {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 4px;
+        font-weight: 500;
+      }
+      .view-all {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .view-all:hover {
+        color: var(--accent2);
+      }
+
+      /* SKILLS */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 14px;
+      }
+      .skill-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 18px 20px;
+      }
+      .skill-card-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .skill-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+      }
+      .skill-icon.blue {
+        background: #dbeafe;
+        color: #1d4ed8;
+      }
+      .skill-icon.green {
+        background: #dcfce7;
+        color: #15803d;
+      }
+      .skill-icon.amber {
+        background: #fef9c3;
+        color: #92400e;
+      }
+      .skill-icon.purple {
+        background: #ede9fe;
+        color: #6d28d9;
+      }
+      .skill-card-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text);
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .tag {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 3px 9px;
+        border-radius: 5px;
+        background: var(--surface2);
+        color: var(--muted);
+        font-family: var(--mono);
+      }
+
+      /* PROJECTS */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+      }
+      .proj-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition:
+          box-shadow 0.2s,
+          transform 0.2s;
+      }
+      .proj-card:hover {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        transform: translateY(-3px);
+      }
+      .proj-thumb {
+        height: 175px;
+        background: var(--surface2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        position: relative;
+        overflow: hidden;
+      }
+      .proj-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+      .proj-type {
+        position: absolute;
+        top: 11px;
+        left: 11px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 3px 8px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .proj-body {
+        padding: 18px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex: 1;
+      }
+      .proj-title {
+        font-size: 16px;
+        font-weight: 800;
+        color: var(--text);
+      }
+      .proj-desc {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .proj-link {
+        margin-top: auto;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--accent);
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .proj-link:hover {
+        color: var(--accent2);
+      }
+
+      /* ABOUT */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .about-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 22px 26px;
+      }
+      .about-card.full {
+        grid-column: 1/-1;
+      }
+      .about-label {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+      .about-text {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+      .about-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .about-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: var(--text);
+        font-weight: 500;
+      }
+      .about-item i {
+        color: var(--accent);
+        font-size: 15px;
+        width: 18px;
+        text-align: center;
+      }
+
+      /* CONTACT */
+      .contact-box {
+        background: var(--accent);
+        border-radius: 18px;
+        padding: 48px;
+        text-align: center;
+      }
+      .contact-box h2 {
+        color: #fff;
+        font-size: 27px;
+        font-weight: 800;
+        margin-bottom: 12px;
+        letter-spacing: -0.5px;
+      }
+      .contact-box p {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 15px;
+        margin-bottom: 30px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .contact-actions {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 28px;
+      }
+      .btn-white {
+        background: #fff;
+        color: var(--accent);
+        padding: 12px 26px;
+        border-radius: 9px;
+        font-weight: 800;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.15s;
+        font-family: var(--sans);
+      }
+      .btn-white:hover {
+        background: #e8f0fe;
+      }
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        padding: 12px 26px;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 14px;
+        border: 1.5px solid rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.15s;
+        font-family: var(--sans);
+      }
+      .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .contact-chips {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .contact-chip {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        padding: 10px 18px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #fff;
+        font-size: 13px;
+      }
+      .contact-chip a {
+        color: #fff;
+        font-weight: 700;
+        transition: opacity 0.15s;
+      }
+      .contact-chip a:hover {
+        opacity: 0.8;
+      }
+
+      /* FOOTER */
+      footer {
+        border-top: 1px solid var(--border);
+        background: var(--surface);
+        padding: 22px 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        color: var(--text);
+      }
+      .footer-icon-links {
+        display: flex;
+        gap: 16px;
+      }
+      .footer-icon-links a {
+        color: var(--muted);
+        font-size: 19px;
+        transition: color 0.15s;
+      }
+      .footer-icon-links a:hover {
+        color: var(--accent);
+      }
+
+      /* TOAST */
+      .toast {
+        position: fixed;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: #0d1117;
+        color: #fff;
+        padding: 10px 22px;
+        border-radius: 9px;
+        font-size: 13px;
+        font-weight: 600;
+        opacity: 0;
+        transition: all 0.3s;
+        z-index: 999;
+        pointer-events: none;
+        white-space: nowrap;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* ANIMATIONS */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade-up {
+        animation: fadeUp 0.45s ease both;
+      }
+      .d1 {
+        animation-delay: 0.05s;
+      }
+      .d2 {
+        animation-delay: 0.12s;
+      }
+      .d3 {
+        animation-delay: 0.2s;
+      }
+      .d4 {
+        animation-delay: 0.27s;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 700px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 36px;
+          padding: 48px 5%;
+        }
+        .hero-avatar {
+          order: -1;
+        }
+        .avatar-frame {
+          width: 200px;
+          height: 200px;
+        }
+        .avatar-initials {
+          font-size: 44px;
+        }
+        h1 {
+          font-size: 32px;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-card.full {
+          grid-column: unset;
+        }
+        .nav-links .hide-mobile {
+          display: none;
+        }
+        .contact-box {
+          padding: 32px 20px;
+        }
+        footer {
+          flex-direction: column;
+          gap: 12px;
+          text-align: center;
+        }
       }
     </style>
   </head>
+  <body>
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
 
-  <body
-    class="bg-background-light dark:bg-background-dark text-[#111618] dark:text-white font-display"
-  >
-    <!-- Top Navigation Bar -->
+    <!-- ===== NAV ===== -->
+    <nav>
+      <a href="#home" class="nav-logo">
+        <div class="nav-logo-icon">JU</div>
+        <span class="nav-logo-text">Jeeyson.UI</span>
+      </a>
+      <div class="nav-links">
+        <a href="#home" class="hide-mobile" data-i18n="nav_home">Home</a>
+        <a href="#projects" class="hide-mobile" data-i18n="nav_projects"
+          >Projects</a
+        >
+        <a href="#about" class="hide-mobile" data-i18n="nav_about">About</a>
+        <a href="#contact" class="nav-btn" data-i18n="nav_hire">Hire Me</a>
+        <button class="lang-btn" id="lang-btn">
+          <i class="bi bi-globe2"></i>
+          <span id="lang-label">ES</span>
+        </button>
+      </div>
+    </nav>
 
-    <header
-      class="sticky-nav border-b border-solid border-[#f0f3f5] dark:border-[#2a3a42] bg-background-light/80 dark:bg-background-dark/80 px-6 md:px-20 lg:px-40 py-4"
-    >
-      <div class="max-w-[1200px] mx-auto flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="text-primary">
-            <span class="material-symbols-outlined text-3xl font-bold"
-              >rocket_launch</span
-            >
+    <!-- ===== HERO ===== -->
+    <section id="home">
+      <div class="hero">
+        <div>
+          <div class="hero-badge fade-up d1" data-i18n="hero_badge">
+            Software Engineer
           </div>
-
-          <h2
-            class="text-[#111618] dark:text-white text-xl font-extrabold tracking-tight"
-          >
-            Jeeyson.UI
-          </h2>
+          <h1 class="fade-up d2">
+            <span data-i18n="hero_title">Hi, I'm Jeeyson. I build</span>
+            <span class="accent" data-i18n="hero_accent">
+              digital experiences</span
+            >
+            <span data-i18n="hero_end"> that matter.</span>
+          </h1>
+          <p class="hero-desc fade-up d3" data-i18n="hero_desc">
+            I specialize in crafting high-performance, modern web applications
+            with a focus on clean aesthetics and intuitive user interactions.
+          </p>
+          <div class="hero-actions fade-up d4">
+            <a href="#projects" class="btn-primary">
+              <i class="bi bi-grid-3x3-gap-fill"></i>
+              <span data-i18n="btn_work">View My Work</span>
+            </a>
+            <!--
+          RESUME: Cuando tengas tu CV listo, sube el archivo como "resume.pdf"
+          a la misma carpeta del index.html y descomenta el enlace de abajo.
+          Luego borra el botón deshabilitado.
+        -->
+            <!-- <a href="resume.pdf" download class="btn-outline">
+          <i class="bi bi-file-earmark-arrow-down"></i>
+          <span data-i18n="btn_resume">Download CV</span>
+        </a> -->
+            <button
+              class="btn-outline disabled"
+              title="CV próximamente"
+              onclick="showToast('CV coming soon / CV próximamente 🚀')"
+            >
+              <i class="bi bi-file-earmark-person"></i>
+              <span data-i18n="btn_resume">Resume</span>
+            </button>
+          </div>
+          <div class="hero-stats fade-up d4">
+            <div class="stat">
+              <span class="stat-num">3+</span
+              ><span class="stat-label" data-i18n="stat_projects"
+                >Projects</span
+              >
+            </div>
+            <div class="stat">
+              <span class="stat-num">2+</span
+              ><span class="stat-label" data-i18n="stat_years">Years</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">CR</span
+              ><span class="stat-label" data-i18n="stat_country"
+                >Costa Rica</span
+              >
+            </div>
+          </div>
         </div>
-
-        <div class="flex items-center gap-8">
-          <nav class="hidden md:flex items-center gap-8">
-            <a
-              class="text-[#111618] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors"
-              href="#home"
-              data-i18n="nav_home"
-              >Home</a
-            >
-
-            <a
-              class="text-[#111618] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors"
-              href="#projects"
-              data-i18n="nav_projects"
-              >Projects</a
-            >
-
-            <a
-              class="text-[#111618] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors"
-              href="#about"
-              data-i18n="nav_about"
-              >About</a
-            >
-
-            <a
-              class="text-[#111618] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors"
-              href="#contact"
-              data-i18n="nav_contact"
-              >Contact</a
-            >
-          </nav>
-
-          <a
-            href="#contact"
-            class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-10 px-5 bg-primary text-white text-sm font-bold transition-transform hover:scale-105 active:scale-95"
-          >
-            <span data-i18n="hire_me">Hire Me</span>
-          </a>
-
-          <!-- Language Switcher -->
-          <button
-            id="lang-switcher"
-            class="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-[#1c2a31] text-[#111618] dark:text-white text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-all"
-          >
-            <i class="bi bi-globe2"></i>
-            <span id="current-lang">ES</span>
-          </button>
+        <div class="hero-avatar fade-up d3">
+          <div class="avatar-frame">
+            <!--
+          FOTO: Sube tu foto como "img/foto.jpg" y descomenta la línea de abajo.
+          <img src="img/foto.jpg" alt="Jeeyson"/>
+        -->
+            <span class="avatar-initials">JU</span>
+            <div class="avatar-dot"></div>
+          </div>
         </div>
       </div>
-    </header>
+    </section>
 
-    <main class="flex flex-col items-center">
-      <!-- Hero Section -->
-
-      <section
-        id="home"
-        class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 pt-16 pb-20"
-      >
-        <div class="@container">
-          <div
-            class="flex flex-col gap-10 @[864px]:flex-row @[864px]:items-center"
-          >
-            <div class="flex flex-col gap-8 flex-1">
-              <div class="flex flex-col gap-4">
-                <span
-                  class="text-primary font-bold tracking-widest text-sm uppercase"
-                  data-i18n="hero_tagline"
-                  >Creative Developer</span
-                >
-
-                <h1
-                  class="text-[#111618] dark:text-white text-5xl font-extrabold leading-[1.1] tracking-[-0.04em] @[480px]:text-6xl"
-                >
-                  <span data-i18n="hero_title">Hi, I'm Jeeyson. I build</span>
-                  <span class="text-primary" data-i18n="hero_title_highlight"
-                    >digital experiences</span
-                  >
-                  <span data-i18n="hero_title_end">that matter.</span>
-                </h1>
-
-                <p
-                  class="text-[#607c8a] dark:text-gray-400 text-lg font-medium leading-relaxed max-w-[500px]"
-                  data-i18n="hero_description"
-                >
-                  I specialize in crafting high-performance, modern web
-                  applications with a focus on clean aesthetics and intuitive
-                  user interactions.
-                </p>
-              </div>
-
-              <div class="flex gap-4">
-                <a
-                  href="#projects"
-                  class="flex min-w-[140px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-base font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all"
-                >
-                  <span data-i18n="view_work">View My Work</span>
-                </a>
-
-                <button
-                  class="flex min-w-[140px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white dark:bg-[#1c2a31] border border-[#dce4e8] dark:border-[#2a3a42] text-[#111618] dark:text-white text-base font-bold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all"
-                >
-                  <span data-i18n="resume">Resume</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="w-full @[864px]:w-[45%] flex justify-center">
-              <div class="relative w-full aspect-square max-w-[450px]">
-                <div
-                  class="absolute inset-0 bg-primary/10 rounded-3xl rotate-6"
-                ></div>
-
-                <div
-                  class="absolute inset-0 bg-primary/5 rounded-3xl -rotate-3"
-                ></div>
-
-                <div
-                  class="relative w-full h-full bg-center bg-no-repeat bg-cover rounded-3xl shadow-2xl overflow-hidden border-4 border-white dark:border-[#1c2a31]"
-                  data-alt="Modern abstract 3D geometric shapes with blue accents"
-                  style="
-                    background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAopHnQZKa5vd9nzrxEaj5hqM3jE6u8xWuALm_HsflRKnYSgc6-ReaZIWJKaBClMm_kgbDruYoag-QDsW9SskcSSE4PxM9V02Ldp18KFHvEXuWWTCSemI1Zg4fqrCc6GzQyVWEalW3n_ny_704LKgMkuPbchdMpQOVWhDl7N-vC2YE5Z0kTlGioxaL6gZcSBsulcQDdBsLnzHRfwDOeRUIRlNFHK9mmKlzFCJ2RRFjDj0Ci7_Ng9Uq8d2stY60Y2R-Dl9aHt2Jt1qs&quot;);
-                  "
-                ></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Featured Projects Header -->
-
-      <section
-        id="projects"
-        class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 pt-10"
-      >
-        <div
-          class="flex items-end justify-between border-b border-[#f0f3f5] dark:border-[#2a3a42] pb-6"
-        >
+    <!-- ===== SKILLS ===== -->
+    <section id="skills">
+      <div class="section" style="padding-top: 0">
+        <div class="section-header">
           <div>
-            <h2
-              class="text-[#111618] dark:text-white text-3xl font-extrabold tracking-tight"
-              data-i18n="featured_projects"
-            >
-              Featured Projects
-            </h2>
-
-            <p
-              class="text-[#607c8a] dark:text-gray-400 mt-2"
-              data-i18n="projects_subtitle"
-            >
-              A selection of my recent work in design and development.
-            </p>
+            <div class="section-title" data-i18n="skills_title">
+              Technical Skills
+            </div>
+            <div class="section-sub" data-i18n="skills_sub">
+              Technologies I work with
+            </div>
           </div>
-
-          <a
-            class="text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all"
-            href="#projects"
-          >
-            <span data-i18n="view_all">View All</span>
-            <span class="material-symbols-outlined">arrow_forward</span>
-          </a>
         </div>
-      </section>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-icon blue">
+                <i class="bi bi-code-slash"></i>
+              </div>
+              <span class="skill-card-title" data-i18n="skill_frontend"
+                >Frontend</span
+              >
+            </div>
+            <div class="tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span
+              ><span class="tag">JavaScript</span
+              ><span class="tag">Tailwind</span><span class="tag">React</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-icon green"><i class="bi bi-server"></i></div>
+              <span class="skill-card-title" data-i18n="skill_backend"
+                >Backend & Tools</span
+              >
+            </div>
+            <div class="tags">
+              <span class="tag">Node.js</span><span class="tag">Git</span
+              ><span class="tag">GitHub</span><span class="tag">REST APIs</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-icon amber"><i class="bi bi-brush"></i></div>
+              <span class="skill-card-title" data-i18n="skill_design"
+                >Design</span
+              >
+            </div>
+            <div class="tags">
+              <span class="tag">Figma</span><span class="tag">UX/UI</span
+              ><span class="tag">Responsive</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-icon purple"><i class="bi bi-cloud"></i></div>
+              <span class="skill-card-title" data-i18n="skill_deploy"
+                >Deploy & Hosting</span
+              >
+            </div>
+            <div class="tags">
+              <span class="tag">Netlify</span><span class="tag">Vercel</span
+              ><span class="tag">GitHub Pages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <!-- Project Grid -->
-
-      <section class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 py-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project 1 -->
-
-          <div class="group flex flex-col gap-5">
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+      <div class="section" style="padding-top: 0">
+        <div class="section-header">
+          <div>
+            <div class="section-title" data-i18n="projects_title">
+              Featured Projects
+            </div>
+            <div class="section-sub" data-i18n="projects_sub">
+              A selection of my recent academic & personal work
+            </div>
+          </div>
+          <a href="projects.html" class="view-all"
+            ><span data-i18n="view_all">View All</span>
+            <i class="bi bi-arrow-right"></i
+          ></a>
+        </div>
+        <div class="projects-grid">
+          <!-- Project 1: Gold Fishing -->
+          <div class="proj-card">
             <a
               href="https://goldfishing.netlify.app/"
               target="_blank"
               rel="noopener noreferrer"
-              class="relative w-full aspect-[4/3] bg-center bg-no-repeat bg-cover rounded-2xl overflow-hidden shadow-sm transition-all group-hover:shadow-xl group-hover:-translate-y-1"
-              data-alt="Gold Fishing - E-commerce de pesca"
-              style="background-image: url(&quot;img/Golfish.png&quot;)"
+              class="proj-thumb"
             >
-              <div
-                class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
-              >
-                <span
-                  class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg"
-                  data-i18n="view_case_study"
-                  >View Case Study</span
-                >
-              </div>
+              <img
+                src="img/Golfish.png"
+                alt="Gold Fishing"
+                onerror="
+                  this.style.display = 'none';
+                  this.parentNode.innerHTML +=
+                    '<span style=font-size:36px>🎣</span>';
+                "
+              />
+              <span class="proj-type">E-commerce</span>
             </a>
-
-            <div class="flex flex-col gap-2">
-              <span
-                class="text-primary text-xs font-bold uppercase tracking-widest"
-                >E-commerce</span
-              >
-
-              <h3 class="text-[#111618] dark:text-white text-xl font-bold">
-                Gold Fishing
-              </h3>
-
-              <p
-                class="text-[#607c8a] dark:text-gray-400 text-sm font-medium leading-relaxed"
-              >
+            <div class="proj-body">
+              <div class="proj-title">Gold Fishing</div>
+              <p class="proj-desc" data-i18n="proj1_desc">
                 E-commerce especializado en artículos de pesca con una
-                experiencia de compra moderna y intuitiva.
+                experiencia de compra moderna e intuitiva.
               </p>
-
+              <div class="tags">
+                <span class="tag">HTML</span><span class="tag">CSS</span
+                ><span class="tag">JS</span>
+              </div>
               <a
-                class="text-primary text-sm font-bold mt-2 flex items-center gap-1"
+                class="proj-link"
                 href="https://goldfishing.netlify.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span data-i18n="explore_project">Explore Project</span>
-                <span class="material-symbols-outlined text-sm"
-                  >open_in_new</span
-                >
+                <span data-i18n="explore">Explore Project</span>
+                <i class="bi bi-arrow-up-right"></i>
               </a>
             </div>
           </div>
 
-          <!-- Project 2 -->
-
-          <div class="group flex flex-col gap-5">
+          <!-- Project 2: Techno & EDM Festival -->
+          <div class="proj-card">
             <a
               href="https://gregarious-jalebi-602383.netlify.app/"
               target="_blank"
               rel="noopener noreferrer"
-              class="relative w-full aspect-[4/3] bg-center bg-no-repeat bg-cover rounded-2xl overflow-hidden shadow-sm transition-all group-hover:shadow-xl group-hover:-translate-y-1"
-              data-alt="Techno & EDM Festival - Festival de música electrónica"
-              style="background-image: url(&quot;img/FestivalMusica.png&quot;)"
+              class="proj-thumb"
             >
-              <div
-                class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
-              >
-                <span
-                  class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg"
-                  data-i18n="view_case_study"
-                  >View Case Study</span
-                >
-              </div>
+              <img
+                src="img/FestivalMusica.png"
+                alt="Techno & EDM Festival"
+                onerror="
+                  this.style.display = 'none';
+                  this.parentNode.innerHTML +=
+                    '<span style=font-size:36px>🎵</span>';
+                "
+              />
+              <span class="proj-type">Event Website</span>
             </a>
-
-            <div class="flex flex-col gap-2">
-              <span
-                class="text-primary text-xs font-bold uppercase tracking-widest"
-                >Event Website</span
-              >
-
-              <h3 class="text-[#111618] dark:text-white text-xl font-bold">
-                Techno & EDM Festival
-              </h3>
-
-              <p
-                class="text-[#607c8a] dark:text-gray-400 text-sm font-medium leading-relaxed"
-              >
+            <div class="proj-body">
+              <div class="proj-title">Techno & EDM Festival</div>
+              <p class="proj-desc" data-i18n="proj2_desc">
                 Landing page para festival de música electrónica con diseño
                 vibrante y moderna experiencia de usuario.
               </p>
-
+              <div class="tags">
+                <span class="tag">HTML</span><span class="tag">CSS</span
+                ><span class="tag">UX Design</span>
+              </div>
               <a
-                class="text-primary text-sm font-bold mt-2 flex items-center gap-1"
+                class="proj-link"
                 href="https://gregarious-jalebi-602383.netlify.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Explore Project
-                <span class="material-symbols-outlined text-sm"
-                  >open_in_new</span
-                >
+                <span data-i18n="explore">Explore Project</span>
+                <i class="bi bi-arrow-up-right"></i>
               </a>
             </div>
           </div>
 
-          <!-- Project 3 -->
-
-          <div class="group flex flex-col gap-5">
+          <!-- Project 3: Pasentry -->
+          <div class="proj-card">
             <a
               href="https://pasentry.netlify.app/sugerir-empresa"
               target="_blank"
               rel="noopener noreferrer"
-              class="relative w-full aspect-[4/3] bg-center bg-no-repeat bg-cover rounded-2xl overflow-hidden shadow-sm transition-all group-hover:shadow-xl group-hover:-translate-y-1"
-              data-alt="Pasentry - Sugiere una Empresa"
-              style="
-                background-image:
-                  url(&quot;img/Pasentry.png&quot;),
-                  url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuA3lkDrmI8LCuEyKfNh3sPvonBEGdiENGpBI2zUbWG9xrbgXayEqE80bSSFNEe1hsZWLYasJQBBcBArokSyKUNVX4EMWMqoQrnBldJSWnxfDjq6lYA4JgOFc2hFHhe8JmvqHzggSHiJ2XGBFsa7oqKo0HAqFcvDVwmjUjdFLELaGvYlAJDasbXQAuGTij46YWcfrbn-NQki1FzLZrf3KHFdNqX1dauFbGX4mBLSmcozjryGD1TMccud6eqNjJ8hw2tnMHlWmXMmVSs&quot;);
-              "
+              class="proj-thumb"
             >
-              <div
-                class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
-              >
-                <span
-                  class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg"
-                  >View Case Study</span
-                >
-              </div>
+              <img
+                src="img/Pasentry.png"
+                alt="Pasentry"
+                onerror="
+                  this.style.display = 'none';
+                  this.parentNode.innerHTML +=
+                    '<span style=font-size:36px>🗂️</span>';
+                "
+              />
+              <span class="proj-type">SaaS Platform</span>
             </a>
-
-            <div class="flex flex-col gap-2">
-              <span
-                class="text-primary text-xs font-bold uppercase tracking-widest"
-                >SaaS Platform</span
-              >
-
-              <h3 class="text-[#111618] dark:text-white text-xl font-bold">
-                Pasentry
-              </h3>
-
-              <p
-                class="text-[#607c8a] dark:text-gray-400 text-sm font-medium leading-relaxed"
-              >
+            <div class="proj-body">
+              <div class="proj-title">Pasentry</div>
+              <p class="proj-desc" data-i18n="proj3_desc">
                 Plataforma SaaS que permite a usuarios sugerir empresas para
-                crearelistados en el directorio.
+                crear listados en el directorio.
               </p>
-
+              <div class="tags">
+                <span class="tag">SaaS</span><span class="tag">UI/UX</span
+                ><span class="tag">Forms</span>
+              </div>
               <a
-                class="text-primary text-sm font-bold mt-2 flex items-center gap-1"
+                class="proj-link"
                 href="https://pasentry.netlify.app/sugerir-empresa"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Explore Project
-                <span class="material-symbols-outlined text-sm"
-                  >open_in_new</span
-                >
+                <span data-i18n="explore">Explore Project</span>
+                <i class="bi bi-arrow-up-right"></i>
               </a>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- About Section -->
-      <section
-        id="about"
-        class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 py-16"
-      >
-        <div
-          class="bg-white dark:bg-[#0c1418] border border-[#f0f3f5] dark:border-[#2a3a42] rounded-3xl p-8 md:p-12"
-        >
-          <div class="flex flex-col gap-4 max-w-[800px]">
-            <h2
-              class="text-[#111618] dark:text-white text-3xl font-extrabold tracking-tight"
-              data-i18n="about_title"
+          <!-- Project 4: PlanillaRH -->
+          <div class="proj-card">
+            <a
+              href="https://app-planilla.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="proj-thumb"
             >
-              About
-            </h2>
-            <p
-              class="text-[#607c8a] dark:text-gray-400 text-base md:text-lg font-medium leading-relaxed"
-            >
-              I’m a creative developer focused on building modern,
-              high-performance web experiences with clean UI, thoughtful UX, and
-              accessible interfaces.
-            </p>
-            <p
-              class="text-[#607c8a] dark:text-gray-400 text-base md:text-lg font-medium leading-relaxed"
-            >
-              Want to collaborate? Jump to the contact section and let’s talk
-              about your project.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA Section -->
-
-      <section
-        id="contact"
-        class="w-full bg-white dark:bg-[#0c1418] py-20 mt-10"
-      >
-        <div class="max-w-[1200px] mx-auto px-6 md:px-20 lg:px-40">
-          <div
-            class="bg-primary rounded-3xl p-10 md:p-16 flex flex-col items-center text-center gap-8 shadow-2xl shadow-primary/20 overflow-hidden relative"
-          >
-            <!-- Background Decoration -->
-
-            <div
-              class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-64 h-64 bg-white/10 rounded-full blur-3xl"
-            ></div>
-
-            <div
-              class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-64 h-64 bg-black/5 rounded-full blur-3xl"
-            ></div>
-
-            <div class="relative z-10 flex flex-col gap-4">
-              <h2
-                class="text-white text-4xl md:text-5xl font-black tracking-tight leading-tight"
-              >
-                Interested in working together?
-              </h2>
-
-              <p
-                class="text-white/90 text-lg md:text-xl font-medium max-w-[600px] mx-auto"
-              >
-                I'm currently available for freelance work and full-time
-                creative opportunities. Let's build something amazing.
+              <img
+                src="img/Planilla.png"
+                alt="PlanillaRH"
+                onerror="
+                  this.style.display = 'none';
+                  this.parentNode.innerHTML +=
+                    '<span style=font-size:36px>👥</span>';
+                "
+              />
+              <span class="proj-type">HR System</span>
+            </a>
+            <div class="proj-body">
+              <div class="proj-title">PlanillaRH</div>
+              <p class="proj-desc" data-i18n="proj4_desc">
+                Sistema integral de gestión de planillas, asistencia y recursos
+                humanos con control de accesos por rol.
               </p>
-            </div>
-
-            <div class="relative z-10 flex flex-wrap justify-center gap-4">
+              <div class="tags">
+                <span class="tag">Angular</span><span class="tag">Node.js</span
+                ><span class="tag">Supabase</span>
+              </div>
               <a
-                id="contact-email-link"
-                href="mailto:jasonezezel@gmail.com?subject=Trabajo%20freelance%20/%20colaboraci%C3%B3n&body=Hola%20Jeeyson%2C%20me%20gustar%C3%ADa%20hablar%20sobre..."
-                class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white text-primary text-lg font-extrabold hover:bg-gray-100 transition-all active:scale-95"
+                class="proj-link"
+                href="https://app-planilla.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span>Email</span>
-              </a>
-
-              <a
-                id="contact-whatsapp-link"
-                href="https://wa.me/50671795695?text=Hola%20Jeeyson%2C%20quiero%20cotizar%20un%20proyecto."
-                class="flex min-w-[180px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-transparent border-2 border-white/30 text-white text-lg font-bold hover:bg-white/10 transition-all"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>WhatsApp</span>
+                <span data-i18n="explore">Explore Project</span>
+                <i class="bi bi-arrow-up-right"></i>
               </a>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="relative z-10 w-full max-w-[760px]">
-              <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-                <div
-                  class="bg-white/10 border border-white/15 rounded-2xl p-5 backdrop-blur"
-                >
-                  <div class="flex items-center gap-3">
-                    <i class="bi bi-envelope text-white/90 text-xl"></i>
-                    <div class="flex flex-col">
-                      <span
-                        class="text-white/80 text-xs font-bold tracking-widest uppercase"
-                        >Email</span
-                      >
-                      <a
-                        id="contact-email-text"
-                        class="text-white font-extrabold hover:underline break-all"
-                        href="mailto:jasonezezel@gmail.com"
-                        >jasonezezel@gmail.com</a
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="bg-white/10 border border-white/15 rounded-2xl p-5 backdrop-blur"
-                >
-                  <div class="flex items-center gap-3">
-                    <i class="bi bi-whatsapp text-white/90 text-xl"></i>
-                    <div class="flex flex-col">
-                      <span
-                        class="text-white/80 text-xs font-bold tracking-widest uppercase"
-                        >WhatsApp</span
-                      >
-                      <a
-                        id="contact-whatsapp-text"
-                        class="text-white font-extrabold hover:underline"
-                        href="https://wa.me/50671795695"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >+506 7179 5695</a
-                      >
-                    </div>
-                  </div>
-                </div>
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <div class="section" style="padding-top: 0">
+        <div class="section-header">
+          <div>
+            <div class="section-title" data-i18n="about_title">About Me</div>
+            <div class="section-sub" data-i18n="about_sub">
+              Background & info
+            </div>
+          </div>
+        </div>
+        <div class="about-grid">
+          <div class="about-card full">
+            <div class="about-label" data-i18n="about_who_label">Who I am</div>
+            <p class="about-text" data-i18n="about_text">
+              I'm a creative developer focused on building modern,
+              high-performance web experiences with clean UI, thoughtful UX, and
+              accessible interfaces. Currently working on academic projects that
+              push my skills further in frontend development and product design.
+              I'm passionate about creating interfaces that feel natural and are
+              a joy to use.
+            </p>
+          </div>
+          <div class="about-card">
+            <div class="about-label" data-i18n="about_details_label">
+              Details
+            </div>
+            <div class="about-list">
+              <div class="about-item">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span data-i18n="about_location">Costa Rica</span>
+              </div>
+              <div class="about-item">
+                <i class="bi bi-mortarboard-fill"></i>
+                <span data-i18n="about_edu">Engineering Student</span>
+              </div>
+              <div class="about-item">
+                <i class="bi bi-translate"></i>
+                <span data-i18n="about_lang">Spanish & English</span>
+              </div>
+              <div class="about-item">
+                <i class="bi bi-clock-fill"></i>
+                <span data-i18n="about_avail">Available for freelance</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="about-label" data-i18n="about_interests_label">
+              Interests
+            </div>
+            <div class="about-list">
+              <div class="about-item">
+                <i class="bi bi-palette2"></i>
+                <span data-i18n="int1">UI/UX Design</span>
+              </div>
+              <div class="about-item">
+                <i class="bi bi-phone"></i>
+                <span data-i18n="int2">Mobile-first Development</span>
+              </div>
+              <div class="about-item">
+                <i class="bi bi-lightning-charge-fill"></i>
+                <span data-i18n="int3">Performance Optimization</span>
+              </div>
+              <div class="about-item">
+                <i class="bi bi-people-fill"></i>
+                <span data-i18n="int4">Open Source</span>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Footer -->
-
-      <footer
-        class="w-full max-w-[1200px] px-6 md:px-20 lg:px-40 py-12 flex flex-col md:flex-row items-center justify-between gap-8 border-t border-[#f0f3f5] dark:border-[#2a3a42] mt-10"
-      >
-        <div class="flex items-center gap-3">
-          <div
-            class="size-8 bg-primary rounded-lg flex items-center justify-center"
-          >
-            <span class="material-symbols-outlined text-white text-xl"
-              >rocket_launch</span
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <div class="section" style="padding-top: 0">
+        <div class="contact-box">
+          <h2 data-i18n="cta_title">Interested in working together?</h2>
+          <p data-i18n="cta_desc">
+            I'm currently available for freelance work and academic
+            collaborations. Let's build something amazing together.
+          </p>
+          <div class="contact-actions">
+            <a
+              class="btn-white"
+              href="mailto:jasonezezel@gmail.com?subject=Freelance%20%2F%20Collaboration&body=Hi%20Jeeyson%2C%20I%20would%20like%20to%20talk%20about..."
+              target="_blank"
+              rel="noopener noreferrer"
             >
+              <i class="bi bi-envelope-fill"></i>
+              <span data-i18n="btn_email">Send an Email</span>
+            </a>
+            <a
+              class="btn-ghost"
+              href="https://wa.me/50671795695?text=Hola%20Jeeyson%2C%20quiero%20cotizar%20un%20proyecto."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="bi bi-whatsapp"></i> WhatsApp
+            </a>
           </div>
-
-          <span class="text-[#111618] dark:text-white font-bold"
-            >Jeeyson.UI</span
-          >
+          <div class="contact-chips">
+            <div class="contact-chip">
+              <i class="bi bi-envelope"></i>
+              <a
+                href="mailto:jasonezezel@gmail.com?subject=Freelance%20%2F%20Collaboration&body=Hi%20Jeeyson%2C%20I%20would%20like%20to%20talk%20about..."
+                target="_blank"
+                rel="noopener noreferrer"
+                >jasonezezel@gmail.com</a
+              >
+            </div>
+            <div class="contact-chip">
+              <i class="bi bi-whatsapp"></i>
+              <a
+                href="https://wa.me/50671795695?text=Hola%20Jeeyson%2C%20quiero%20cotizar%20un%20proyecto."
+                target="_blank"
+                rel="noopener noreferrer"
+                >+506 7179 5695</a
+              >
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <p class="text-[#607c8a] dark:text-gray-400 text-sm font-medium">
-          © 2026 Jeeyson UI. Designed with passion for the digital age.
-        </p>
-
-        <div class="flex gap-6">
-          <a
-            class="text-[#607c8a] dark:text-gray-400 hover:text-primary transition-colors"
-            href="#home"
-          >
-            <span class="material-symbols-outlined">language</span>
-          </a>
-
-          <a
-            class="text-[#607c8a] dark:text-gray-400 hover:text-primary transition-colors"
-            href="mailto:jasonezezel@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span class="material-symbols-outlined">alternate_email</span>
-          </a>
-
-          <a
-            class="text-[#607c8a] dark:text-gray-400 hover:text-primary transition-colors"
-            href="https://wa.me/50671795695"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span class="material-symbols-outlined">logo_whatsapp</span>
-          </a>
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <a href="#home" class="footer-logo">
+        <div
+          class="nav-logo-icon"
+          style="width: 26px; height: 26px; font-size: 11px"
+        >
+          JU
         </div>
-      </footer>
-    </main>
+        Jeeyson.UI
+      </a>
+      <span
+        >© 2026 Jeeyson UI —
+        <span data-i18n="footer_copy">Designed with passion</span></span
+      >
+      <div class="footer-icon-links">
+        <a
+          href="mailto:jasonezezel@gmail.com?subject=Freelance%20%2F%20Collaboration&body=Hi%20Jeeyson%2C%20I%20would%20like%20to%20talk%20about..."
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Email"
+        >
+          <i class="bi bi-envelope"></i>
+        </a>
+        <a
+          href="https://wa.me/50671795695?text=Hola%20Jeeyson%2C%20quiero%20cotizar%20un%20proyecto."
+          target="_blank"
+          rel="noopener noreferrer"
+          title="WhatsApp"
+        >
+          <i class="bi bi-whatsapp"></i>
+        </a>
+        <a href="#home" title="Back to top"
+          ><i class="bi bi-arrow-up-circle"></i
+        ></a>
+      </div>
+    </footer>
 
     <script>
-      // Contact info single-source (edit these 2 values)
-      const CONTACT_EMAIL = "jasonezezel@gmail.com";
-      // Digits only + country code (example Peru: 51999999999)
-      const CONTACT_WHATSAPP = "50671795695";
-
-      const emailMailto = `mailto:${encodeURIComponent(CONTACT_EMAIL)}?subject=${encodeURIComponent("Trabajo freelance / colaboración")}&body=${encodeURIComponent("Hola Jeeyson, me gustaría hablar sobre...")}`;
-      const whatsappDeepLink = `https://wa.me/${CONTACT_WHATSAPP}?text=${encodeURIComponent("Hola Jeeyson, quiero cotizar un proyecto.")}`;
-      const whatsappPlain = `https://wa.me/${CONTACT_WHATSAPP}`;
-
-      const emailLink = document.getElementById("contact-email-link");
-      const emailText = document.getElementById("contact-email-text");
-      if (emailLink) emailLink.href = emailMailto;
-      if (emailText) {
-        emailText.href = `mailto:${CONTACT_EMAIL}`;
-        emailText.textContent = CONTACT_EMAIL;
+      // ===== TOAST =====
+      function showToast(msg) {
+        const t = document.getElementById("toast");
+        t.textContent = msg;
+        t.classList.add("show");
+        setTimeout(() => t.classList.remove("show"), 3000);
       }
 
-      const waLink = document.getElementById("contact-whatsapp-link");
-      const waText = document.getElementById("contact-whatsapp-text");
-      if (waLink) waLink.href = whatsappDeepLink;
-      if (waText) waText.href = whatsappPlain;
-
-      // Footer quick links (optional)
-      const footerMail = document.querySelector('footer a[href^="mailto:"]');
-      if (footerMail) footerMail.href = `mailto:${CONTACT_EMAIL}`;
-      const footerWa = document.querySelector(
-        'footer a[href^="https://wa.me/"]',
-      );
-      if (footerWa) footerWa.href = whatsappPlain;
-
-      // Language translations
-      const translations = {
+      // ===== TRANSLATIONS =====
+      const i18n = {
         en: {
           nav_home: "Home",
           nav_projects: "Projects",
           nav_about: "About",
-          nav_contact: "Contact",
-          hire_me: "Hire Me",
-          hero_tagline: "Creative Developer",
+          nav_hire: "Hire Me",
+          hero_badge: "Software Engineer",
           hero_title: "Hi, I'm Jeeyson. I build",
-          hero_title_highlight: "digital experiences",
-          hero_title_end: "that matter.",
-          hero_description:
+          hero_accent: " digital experiences",
+          hero_end: " that matter.",
+          hero_desc:
             "I specialize in crafting high-performance, modern web applications with a focus on clean aesthetics and intuitive user interactions.",
-          view_work: "View My Work",
-          resume: "Resume",
-          featured_projects: "Featured Projects",
-          projects_subtitle:
-            "A selection of my recent work in design and development.",
+          btn_work: "View My Work",
+          btn_resume: "Resume",
+          stat_projects: "Projects",
+          stat_years: "Years",
+          stat_country: "Costa Rica",
+          skills_title: "Technical Skills",
+          skills_sub: "Technologies I work with",
+          skill_frontend: "Frontend",
+          skill_backend: "Backend & Tools",
+          skill_design: "Design",
+          skill_deploy: "Deploy & Hosting",
+          projects_title: "Featured Projects",
+          projects_sub: "A selection of my recent academic & personal work",
           view_all: "View All",
-          view_case_study: "View Case Study",
-          explore_project: "Explore Project",
-          about_title: "About",
-          about_text1:
-            "I'm a creative developer focused on building modern, high-performance web experiences with clean UI, thoughtful UX, and accessible interfaces.",
-          about_text2:
-            "Want to collaborate? Jump to the contact section and let's talk about your project.",
+          proj1_desc:
+            "Specialized e-commerce for fishing gear with a modern and intuitive shopping experience.",
+          proj2_desc:
+            "Landing page for an electronic music festival with vibrant design and modern user experience.",
+          proj3_desc:
+            "SaaS platform that lets users suggest companies to create listings in the directory.",
+          proj4_desc:
+            "Comprehensive HR management system for payroll, attendance and human resources with role-based access control.",
+          explore: "Explore Project",
+          about_title: "About Me",
+          about_sub: "Background & info",
+          about_who_label: "Who I am",
+          about_text:
+            "I'm a creative developer focused on building modern, high-performance web experiences with clean UI, thoughtful UX, and accessible interfaces. Currently working on academic projects that push my skills further in frontend development and product design. I'm passionate about creating interfaces that feel natural and are a joy to use.",
+          about_details_label: "Details",
+          about_location: "Costa Rica",
+          about_edu: "Engineering Student",
+          about_lang: "Spanish & English",
+          about_avail: "Available for freelance",
+          about_interests_label: "Interests",
+          int1: "UI/UX Design",
+          int2: "Mobile-first Development",
+          int3: "Performance Optimization",
+          int4: "Open Source",
           cta_title: "Interested in working together?",
-          cta_description:
-            "I'm currently available for freelance work and full-time creative opportunities. Let's build something amazing.",
-          btn_email: "Email",
-          btn_whatsapp: "WhatsApp",
-          label_email: "Email",
-          label_whatsapp: "WhatsApp",
+          cta_desc:
+            "I'm currently available for freelance work and academic collaborations. Let's build something amazing together.",
+          btn_email: "Send an Email",
+          footer_copy: "Designed with passion",
         },
         es: {
           nav_home: "Inicio",
           nav_projects: "Proyectos",
           nav_about: "Sobre Mí",
-          nav_contact: "Contacto",
-          hire_me: "Contrátame",
-          hero_tagline: "Desarrollador Creativo",
+          nav_hire: "Contrátame",
+          hero_badge: "Desarrollador de Software",
           hero_title: "Hola, soy Jeeyson. Construyo",
-          hero_title_highlight: "experiencias digitales",
-          hero_title_end: "que importan.",
-          hero_description:
+          hero_accent: " experiencias digitales",
+          hero_end: " que importan.",
+          hero_desc:
             "Me especializo en crear aplicaciones web modernas y de alto rendimiento con un enfoque en estética limpia e interacciones de usuario intuitivas.",
-          view_work: "Ver Mi Trabajo",
-          resume: "Currículum",
-          featured_projects: "Proyectos Destacados",
-          projects_subtitle:
-            "Una selección de mi trabajo reciente en diseño y desarrollo.",
+          btn_work: "Ver Mi Trabajo",
+          btn_resume: "Currículum",
+          stat_projects: "Proyectos",
+          stat_years: "Años",
+          stat_country: "Costa Rica",
+          skills_title: "Habilidades Técnicas",
+          skills_sub: "Tecnologías con las que trabajo",
+          skill_frontend: "Frontend",
+          skill_backend: "Backend & Herramientas",
+          skill_design: "Diseño",
+          skill_deploy: "Deploy & Hosting",
+          projects_title: "Proyectos Destacados",
+          projects_sub:
+            "Una selección de mi trabajo académico y personal reciente",
           view_all: "Ver Todo",
-          view_case_study: "Ver Caso de Estudio",
-          explore_project: "Explorar Proyecto",
+          proj1_desc:
+            "E-commerce especializado en artículos de pesca con una experiencia de compra moderna e intuitiva.",
+          proj2_desc:
+            "Landing page para festival de música electrónica con diseño vibrante y moderna experiencia de usuario.",
+          proj3_desc:
+            "Plataforma SaaS que permite a usuarios sugerir empresas para crear listados en el directorio.",
+          proj4_desc:
+            "Sistema integral de gestión de planillas, asistencia y recursos humanos con control de accesos y permisos por rol.",
+          explore: "Explorar Proyecto",
           about_title: "Sobre Mí",
-          about_text1:
-            "Soy un desarrollador creativo enfocado en crear experiencias web modernas y de alto rendimiento con interfaces de usuario limpias, UX reflexivo y interfaces accesibles.",
-          about_text2:
-            "¿Quieres colaborar? Ve a la sección de contacto y hablemos de tu proyecto.",
+          about_sub: "Perfil e información",
+          about_who_label: "Quién soy",
+          about_text:
+            "Soy un desarrollador creativo enfocado en crear experiencias web modernas y de alto rendimiento con interfaces limpias, UX reflexivo e interfaces accesibles. Actualmente trabajo en proyectos académicos que impulsan mis habilidades en desarrollo frontend y diseño de productos. Me apasiona crear interfaces que se sientan naturales y sean un placer de usar.",
+          about_details_label: "Detalles",
+          about_location: "Costa Rica",
+          about_edu: "Estudiante de Ingeniería",
+          about_lang: "Español e Inglés",
+          about_avail: "Disponible para freelance",
+          about_interests_label: "Intereses",
+          int1: "Diseño UI/UX",
+          int2: "Desarrollo Mobile-first",
+          int3: "Optimización de Rendimiento",
+          int4: "Open Source",
           cta_title: "¿Te interesa trabajar juntos?",
-          cta_description:
-            "Actualmente estoy disponible para trabajos freelance y oportunidades creativas a tiempo completo. Construyamos algo increíble.",
-          btn_email: "Correo",
-          btn_whatsapp: "WhatsApp",
-          label_email: "Correo",
-          label_whatsapp: "WhatsApp",
+          cta_desc:
+            "Actualmente estoy disponible para trabajos freelance y colaboraciones académicas. Construyamos algo increíble juntos.",
+          btn_email: "Enviar Correo",
+          footer_copy: "Diseñado con pasión",
         },
       };
 
       let currentLang = "en";
 
-      function setLanguage(lang) {
+      function applyLang(lang) {
         currentLang = lang;
         document.documentElement.lang = lang;
-
-        // Update all translatable elements
         document.querySelectorAll("[data-i18n]").forEach((el) => {
           const key = el.getAttribute("data-i18n");
-          if (translations[lang] && translations[lang][key]) {
-            el.textContent = translations[lang][key];
-          }
+          if (i18n[lang]?.[key] !== undefined) el.textContent = i18n[lang][key];
         });
+        document.getElementById("lang-label").textContent =
+          lang === "en" ? "ES" : "EN";
+        try {
+          localStorage.setItem("portfolio_lang", lang);
+        } catch (e) {}
+      }
 
-        // Update language switcher button
-        const langBtn = document.getElementById("current-lang");
-        if (langBtn) {
-          langBtn.textContent = lang.toUpperCase();
+      document.getElementById("lang-btn").addEventListener("click", () => {
+        applyLang(currentLang === "en" ? "es" : "en");
+      });
+
+      // Init language
+      (function init() {
+        let lang = "en";
+        try {
+          lang = localStorage.getItem("portfolio_lang") || lang;
+        } catch (e) {}
+        if (!i18n[lang]) {
+          const bl = navigator.language.slice(0, 2);
+          lang = i18n[bl] ? bl : "en";
         }
-
-        // Save preference
-        localStorage.setItem("preferredLang", lang);
-      }
-
-      // Language switcher click handler
-      const langSwitcher = document.getElementById("lang-switcher");
-      if (langSwitcher) {
-        langSwitcher.addEventListener("click", () => {
-          const newLang = currentLang === "en" ? "es" : "en";
-          setLanguage(newLang);
-        });
-      }
-
-      // Initialize language from localStorage or default to English
-      const savedLang = localStorage.getItem("preferredLang");
-      if (savedLang && translations[savedLang]) {
-        setLanguage(savedLang);
-      } else {
-        // Try to detect browser language
-        const browserLang = navigator.language.slice(0, 2);
-        if (translations[browserLang]) {
-          setLanguage(browserLang);
-        }
-      }
+        applyLang(lang);
+      })();
     </script>
   </body>
 </html>

@@ -1,0 +1,895 @@
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects — Jeeyson UI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      :root {
+        --bg: #f4f6f9;
+        --surface: #ffffff;
+        --surface2: #eef1f5;
+        --border: #e1e5eb;
+        --text: #0d1117;
+        --muted: #5a6678;
+        --accent: #0969da;
+        --accent2: #0550ae;
+        --tag-bg: #dbeafe;
+        --tag-text: #1e40af;
+        --mono: "Space Mono", monospace;
+        --sans: "Plus Jakarta Sans", sans-serif;
+      }
+      body {
+        font-family: var(--sans);
+        background: var(--bg);
+        color: var(--text);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* NAV */
+      nav {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 0 5%;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 62px;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+      }
+      .nav-logo-icon {
+        width: 33px;
+        height: 33px;
+        background: var(--accent);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 13px;
+        font-family: var(--mono);
+        font-weight: 700;
+      }
+      .nav-logo-text {
+        font-weight: 800;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .nav-links a {
+        font-size: 13px;
+        font-weight: 600;
+        padding: 6px 13px;
+        border-radius: 7px;
+        color: var(--muted);
+        transition: all 0.15s;
+      }
+      .nav-links a:hover {
+        color: var(--text);
+        background: var(--surface2);
+      }
+      .nav-links a.active {
+        color: var(--accent);
+        background: var(--tag-bg);
+      }
+      .nav-btn {
+        background: var(--accent) !important;
+        color: #fff !important;
+        border-radius: 7px;
+      }
+      .nav-btn:hover {
+        background: var(--accent2) !important;
+      }
+      .lang-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--surface2);
+        border: none;
+        border-radius: 7px;
+        padding: 6px 13px;
+        font-size: 13px;
+        font-weight: 700;
+        font-family: var(--sans);
+        cursor: pointer;
+        color: var(--text);
+        transition: background 0.15s;
+        margin-left: 4px;
+      }
+      .lang-btn:hover {
+        background: var(--border);
+      }
+
+      /* PAGE HEADER */
+      .page-header {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 52px 5% 36px;
+      }
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 20px;
+      }
+      .breadcrumb a {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .breadcrumb a:hover {
+        color: var(--accent2);
+      }
+      .breadcrumb i {
+        font-size: 11px;
+      }
+      .page-title {
+        font-size: 36px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 10px;
+      }
+      .page-title .accent {
+        color: var(--accent);
+      }
+      .page-sub {
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      /* FILTERS */
+      .filters-bar {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 0 5% 32px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        padding: 7px 16px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        border: 1.5px solid var(--border);
+        background: var(--surface);
+        color: var(--muted);
+        cursor: pointer;
+        font-family: var(--sans);
+        transition: all 0.15s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .filter-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .filter-btn.active {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      .filter-count {
+        font-size: 11px;
+        background: rgba(255, 255, 255, 0.25);
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-weight: 700;
+      }
+      .filter-btn:not(.active) .filter-count {
+        background: var(--surface2);
+        color: var(--muted);
+      }
+      .results-info {
+        margin-left: auto;
+        font-size: 13px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      /* PROJECTS GRID */
+      .projects-wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 0 5% 60px;
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+      }
+      .proj-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition:
+          box-shadow 0.2s,
+          transform 0.2s,
+          opacity 0.25s;
+      }
+      .proj-card:hover {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        transform: translateY(-3px);
+      }
+      .proj-card.hidden {
+        display: none;
+      }
+      .proj-thumb {
+        height: 175px;
+        background: var(--surface2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        position: relative;
+        overflow: hidden;
+      }
+      .proj-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+      .proj-type {
+        position: absolute;
+        top: 11px;
+        left: 11px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 3px 8px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .proj-body {
+        padding: 18px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex: 1;
+      }
+      .proj-title {
+        font-size: 16px;
+        font-weight: 800;
+        color: var(--text);
+      }
+      .proj-desc {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .tag {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 3px 9px;
+        border-radius: 5px;
+        background: var(--surface2);
+        color: var(--muted);
+        font-family: var(--mono);
+      }
+      .proj-link {
+        margin-top: auto;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--accent);
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .proj-link:hover {
+        color: var(--accent2);
+      }
+
+      /* EMPTY STATE */
+      .empty-state {
+        grid-column: 1/-1;
+        text-align: center;
+        padding: 60px 20px;
+        display: none;
+      }
+      .empty-state i {
+        font-size: 40px;
+        color: var(--border);
+        margin-bottom: 14px;
+        display: block;
+      }
+      .empty-state p {
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      /* CONTACT STRIP */
+      .contact-strip {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 0 5% 60px;
+      }
+      .contact-box {
+        background: var(--accent);
+        border-radius: 18px;
+        padding: 40px 48px;
+        text-align: center;
+      }
+      .contact-box h2 {
+        color: #fff;
+        font-size: 23px;
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+      .contact-box p {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+      .btn-white {
+        background: #fff;
+        color: var(--accent);
+        padding: 11px 24px;
+        border-radius: 9px;
+        font-weight: 800;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.15s;
+        font-family: var(--sans);
+      }
+      .btn-white:hover {
+        background: #e8f0fe;
+      }
+
+      /* FOOTER */
+      footer {
+        border-top: 1px solid var(--border);
+        background: var(--surface);
+        padding: 22px 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        color: var(--text);
+      }
+      .footer-icon-links {
+        display: flex;
+        gap: 16px;
+      }
+      .footer-icon-links a {
+        color: var(--muted);
+        font-size: 19px;
+        transition: color 0.15s;
+      }
+      .footer-icon-links a:hover {
+        color: var(--accent);
+      }
+
+      /* ANIMATIONS */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .proj-card {
+        animation: fadeUp 0.4s ease both;
+      }
+      .proj-card:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .proj-card:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .proj-card:nth-child(3) {
+        animation-delay: 0.15s;
+      }
+      .proj-card:nth-child(4) {
+        animation-delay: 0.2s;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 700px) {
+        .page-title {
+          font-size: 26px;
+        }
+        .results-info {
+          display: none;
+        }
+        .contact-box {
+          padding: 28px 20px;
+        }
+        footer {
+          flex-direction: column;
+          gap: 12px;
+          text-align: center;
+        }
+        .nav-links .hide-mobile {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">JU</div>
+        <span class="nav-logo-text">Jeeyson.UI</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#home" class="hide-mobile" data-i18n="nav_home"
+          >Home</a
+        >
+        <a
+          href="projects.html"
+          class="hide-mobile active"
+          data-i18n="nav_projects"
+          >Projects</a
+        >
+        <a href="index.html#about" class="hide-mobile" data-i18n="nav_about"
+          >About</a
+        >
+        <a href="index.html#contact" class="nav-btn" data-i18n="nav_hire"
+          >Hire Me</a
+        >
+        <button class="lang-btn" id="lang-btn">
+          <i class="bi bi-globe2"></i>
+          <span id="lang-label">ES</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html"
+          ><i class="bi bi-house-fill"></i>
+          <span data-i18n="nav_home">Home</span></a
+        >
+        <i class="bi bi-chevron-right"></i>
+        <span data-i18n="nav_projects">Projects</span>
+      </div>
+      <h1 class="page-title" data-i18n="page_title">
+        All <span class="accent">Projects</span>
+      </h1>
+      <p class="page-sub" data-i18n="page_sub">
+        A full collection of my academic and personal work.
+      </p>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filters-bar">
+      <button class="filter-btn active" data-filter="all">
+        <i class="bi bi-grid-fill"></i>
+        <span data-i18n="filter_all">All</span>
+        <span class="filter-count">4</span>
+      </button>
+      <button class="filter-btn" data-filter="frontend">
+        <i class="bi bi-code-slash"></i>
+        <span data-i18n="filter_frontend">Frontend</span>
+        <span class="filter-count">2</span>
+      </button>
+      <button class="filter-btn" data-filter="saas">
+        <i class="bi bi-cloud-fill"></i>
+        <span data-i18n="filter_saas">SaaS</span>
+        <span class="filter-count">1</span>
+      </button>
+      <button class="filter-btn" data-filter="fullstack">
+        <i class="bi bi-layers-fill"></i>
+        <span data-i18n="filter_fullstack">Full Stack</span>
+        <span class="filter-count">1</span>
+      </button>
+      <span class="results-info" id="results-info">Showing 4 projects</span>
+    </div>
+
+    <!-- PROJECTS GRID -->
+    <div class="projects-wrap">
+      <div class="projects-grid" id="projects-grid">
+        <!-- Gold Fishing -->
+        <div class="proj-card" data-category="frontend">
+          <a
+            href="https://goldfishing.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="proj-thumb"
+          >
+            <img
+              src="img/Golfish.png"
+              alt="Gold Fishing"
+              onerror="
+                this.style.display = 'none';
+                this.parentNode.innerHTML +=
+                  '<span style=font-size:36px>🎣</span>';
+              "
+            />
+            <span class="proj-type">E-commerce</span>
+          </a>
+          <div class="proj-body">
+            <div class="proj-title">Gold Fishing</div>
+            <p class="proj-desc" data-i18n="proj1_desc">
+              Specialized e-commerce for fishing gear with a modern and
+              intuitive shopping experience.
+            </p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JS</span>
+            </div>
+            <a
+              class="proj-link"
+              href="https://goldfishing.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span data-i18n="explore">Explore Project</span>
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Techno & EDM Festival -->
+        <div class="proj-card" data-category="frontend">
+          <a
+            href="https://gregarious-jalebi-602383.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="proj-thumb"
+          >
+            <img
+              src="img/FestivalMusica.png"
+              alt="Techno & EDM Festival"
+              onerror="
+                this.style.display = 'none';
+                this.parentNode.innerHTML +=
+                  '<span style=font-size:36px>🎵</span>';
+              "
+            />
+            <span class="proj-type">Event Website</span>
+          </a>
+          <div class="proj-body">
+            <div class="proj-title">Techno & EDM Festival</div>
+            <p class="proj-desc" data-i18n="proj2_desc">
+              Landing page for an electronic music festival with vibrant design
+              and modern user experience.
+            </p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">UX Design</span>
+            </div>
+            <a
+              class="proj-link"
+              href="https://gregarious-jalebi-602383.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span data-i18n="explore">Explore Project</span>
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pasentry -->
+        <div class="proj-card" data-category="saas">
+          <a
+            href="https://pasentry.netlify.app/sugerir-empresa"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="proj-thumb"
+          >
+            <img
+              src="img/Pasentry.png"
+              alt="Pasentry"
+              onerror="
+                this.style.display = 'none';
+                this.parentNode.innerHTML +=
+                  '<span style=font-size:36px>🗂️</span>';
+              "
+            />
+            <span class="proj-type">SaaS Platform</span>
+          </a>
+          <div class="proj-body">
+            <div class="proj-title">Pasentry</div>
+            <p class="proj-desc" data-i18n="proj3_desc">
+              SaaS platform that lets users suggest companies to create listings
+              in the directory.
+            </p>
+            <div class="tags">
+              <span class="tag">SaaS</span>
+              <span class="tag">UI/UX</span>
+              <span class="tag">Forms</span>
+            </div>
+            <a
+              class="proj-link"
+              href="https://pasentry.netlify.app/sugerir-empresa"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span data-i18n="explore">Explore Project</span>
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- PlanillaRH -->
+        <div class="proj-card" data-category="fullstack">
+          <a
+            href="https://app-planilla.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="proj-thumb"
+          >
+            <img
+              src="img/Planilla.png"
+              alt="PlanillaRH"
+              onerror="
+                this.style.display = 'none';
+                this.parentNode.innerHTML +=
+                  '<span style=font-size:36px>👥</span>';
+              "
+            />
+            <span class="proj-type">HR System</span>
+          </a>
+          <div class="proj-body">
+            <div class="proj-title">PlanillaRH</div>
+            <p class="proj-desc" data-i18n="proj4_desc">
+              Comprehensive HR management system for payroll, attendance and
+              human resources with role-based access control.
+            </p>
+            <div class="tags">
+              <span class="tag">Angular</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Supabase</span>
+            </div>
+            <a
+              class="proj-link"
+              href="https://app-planilla.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span data-i18n="explore">Explore Project</span>
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Empty state -->
+        <div class="empty-state" id="empty-state">
+          <i class="bi bi-folder2-open"></i>
+          <p data-i18n="no_projects">No projects found in this category.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT STRIP -->
+    <div class="contact-strip">
+      <div class="contact-box">
+        <h2 data-i18n="cta_title">Interested in working together?</h2>
+        <p data-i18n="cta_desc">
+          I'm currently available for freelance work and academic
+          collaborations.
+        </p>
+        <a
+          class="btn-white"
+          href="mailto:jasonezezel@gmail.com?subject=Freelance%20%2F%20Collaboration"
+        >
+          <i class="bi bi-envelope-fill"></i>
+          <span data-i18n="btn_email">Send an Email</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <a href="index.html" class="footer-logo">
+        <div
+          class="nav-logo-icon"
+          style="width: 26px; height: 26px; font-size: 11px"
+        >
+          JU
+        </div>
+        Jeeyson.UI
+      </a>
+      <span
+        >© 2026 Jeeyson UI —
+        <span data-i18n="footer_copy">Designed with passion</span></span
+      >
+      <div class="footer-icon-links">
+        <a href="mailto:jasonezezel@gmail.com" target="_blank" title="Email"
+          ><i class="bi bi-envelope"></i
+        ></a>
+        <a href="https://wa.me/50671795695" target="_blank" title="WhatsApp"
+          ><i class="bi bi-whatsapp"></i
+        ></a>
+        <a href="index.html" title="Back to portfolio"
+          ><i class="bi bi-arrow-left-circle"></i
+        ></a>
+      </div>
+    </footer>
+
+    <script>
+      // ===== TRANSLATIONS =====
+      const i18n = {
+        en: {
+          nav_home: "Home",
+          nav_projects: "Projects",
+          nav_about: "About",
+          nav_hire: "Hire Me",
+          page_title: "All Projects",
+          page_sub: "A full collection of my academic and personal work.",
+          filter_all: "All",
+          filter_frontend: "Frontend",
+          filter_saas: "SaaS",
+          filter_fullstack: "Full Stack",
+          proj1_desc:
+            "Specialized e-commerce for fishing gear with a modern and intuitive shopping experience.",
+          proj2_desc:
+            "Landing page for an electronic music festival with vibrant design and modern user experience.",
+          proj3_desc:
+            "SaaS platform that lets users suggest companies to create listings in the directory.",
+          proj4_desc:
+            "Comprehensive HR management system for payroll, attendance and human resources with role-based access control.",
+          explore: "Explore Project",
+          no_projects: "No projects found in this category.",
+          cta_title: "Interested in working together?",
+          cta_desc:
+            "I'm currently available for freelance work and academic collaborations.",
+          btn_email: "Send an Email",
+          footer_copy: "Designed with passion",
+        },
+        es: {
+          nav_home: "Inicio",
+          nav_projects: "Proyectos",
+          nav_about: "Sobre Mí",
+          nav_hire: "Contrátame",
+          page_title: "Todos los Proyectos",
+          page_sub: "Colección completa de mi trabajo académico y personal.",
+          filter_all: "Todos",
+          filter_frontend: "Frontend",
+          filter_saas: "SaaS",
+          filter_fullstack: "Full Stack",
+          proj1_desc:
+            "E-commerce especializado en artículos de pesca con una experiencia de compra moderna e intuitiva.",
+          proj2_desc:
+            "Landing page para festival de música electrónica con diseño vibrante y moderna experiencia de usuario.",
+          proj3_desc:
+            "Plataforma SaaS que permite a usuarios sugerir empresas para crear listados en el directorio.",
+          proj4_desc:
+            "Sistema integral de gestión de planillas, asistencia y recursos humanos con control de accesos por rol.",
+          explore: "Explorar Proyecto",
+          no_projects: "No se encontraron proyectos en esta categoría.",
+          cta_title: "¿Te interesa trabajar juntos?",
+          cta_desc:
+            "Actualmente estoy disponible para trabajos freelance y colaboraciones académicas.",
+          btn_email: "Enviar Correo",
+          footer_copy: "Diseñado con pasión",
+        },
+      };
+
+      let currentLang = "en";
+
+      function applyLang(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (i18n[lang]?.[key] !== undefined) el.textContent = i18n[lang][key];
+        });
+        document.getElementById("lang-label").textContent =
+          lang === "en" ? "ES" : "EN";
+        updateResultsInfo();
+        try {
+          localStorage.setItem("portfolio_lang", lang);
+        } catch (e) {}
+      }
+
+      document.getElementById("lang-btn").addEventListener("click", () => {
+        applyLang(currentLang === "en" ? "es" : "en");
+      });
+
+      // ===== FILTERS =====
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const cards = document.querySelectorAll(".proj-card[data-category]");
+      const emptyState = document.getElementById("empty-state");
+
+      function updateResultsInfo() {
+        const visible = [...cards].filter(
+          (c) => !c.classList.contains("hidden"),
+        ).length;
+        const info = document.getElementById("results-info");
+        info.textContent =
+          currentLang === "en"
+            ? `Showing ${visible} project${visible !== 1 ? "s" : ""}`
+            : `Mostrando ${visible} proyecto${visible !== 1 ? "s" : ""}`;
+      }
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const filter = btn.getAttribute("data-filter");
+          let visibleCount = 0;
+
+          cards.forEach((card) => {
+            const match =
+              filter === "all" || card.getAttribute("data-category") === filter;
+            card.classList.toggle("hidden", !match);
+            if (match) visibleCount++;
+          });
+
+          emptyState.style.display = visibleCount === 0 ? "block" : "none";
+          updateResultsInfo();
+        });
+      });
+
+      // Init
+      (function init() {
+        let lang = "en";
+        try {
+          lang = localStorage.getItem("portfolio_lang") || lang;
+        } catch (e) {}
+        if (!i18n[lang]) lang = "en";
+        applyLang(lang);
+      })();
+    </script>
+  </body>
+</html>
