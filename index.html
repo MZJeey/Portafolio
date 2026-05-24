@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jeeyson — Software Engineer</title>
+    <title>Jeeyson — Software Engineer · Costa Rica</title>
+    <meta
+      name="description"
+      content="Jeeyson Martínez — Software Engineer from Costa Rica specialized in modern, high-performance web applications."
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
@@ -24,6 +28,7 @@
       section[id] {
         scroll-margin-top: 70px;
       }
+
       :root {
         --bg: #f4f6f9;
         --surface: #ffffff;
@@ -38,12 +43,30 @@
         --mono: "Space Mono", monospace;
         --sans: "Plus Jakarta Sans", sans-serif;
       }
+
+      /* DARK MODE */
+      html.dark {
+        --bg: #0d1117;
+        --surface: #161b22;
+        --surface2: #21262d;
+        --border: #30363d;
+        --text: #e6edf3;
+        --muted: #8b949e;
+        --accent: #58a6ff;
+        --accent2: #79c0ff;
+        --tag-bg: #1f3455;
+        --tag-text: #79c0ff;
+      }
+
       body {
         font-family: var(--sans);
         background: var(--bg);
         color: var(--text);
         font-size: 15px;
         line-height: 1.6;
+        transition:
+          background 0.25s,
+          color 0.25s;
       }
       a {
         text-decoration: none;
@@ -62,6 +85,9 @@
         align-items: center;
         justify-content: space-between;
         height: 62px;
+        transition:
+          background 0.25s,
+          border-color 0.25s;
       }
       .nav-logo {
         display: flex;
@@ -112,7 +138,9 @@
       .nav-btn:hover {
         background: var(--accent2) !important;
       }
-      .lang-btn {
+
+      /* ICON BUTTONS (lang + dark) */
+      .icon-btn {
         display: flex;
         align-items: center;
         gap: 6px;
@@ -128,8 +156,11 @@
         transition: background 0.15s;
         margin-left: 4px;
       }
-      .lang-btn:hover {
+      .icon-btn:hover {
         background: var(--border);
+      }
+      .theme-btn {
+        padding: 6px 11px;
       }
 
       /* HERO */
@@ -224,12 +255,12 @@
         border-color: var(--accent);
         color: var(--accent);
       }
-      /* Resume deshabilitado visualmente cuando no hay PDF */
       .btn-outline.disabled {
         opacity: 0.5;
         pointer-events: none;
         cursor: not-allowed;
       }
+
       .hero-avatar {
         display: flex;
         justify-content: center;
@@ -238,7 +269,11 @@
         width: 300px;
         height: 300px;
         border-radius: 20px;
-        background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+        background: linear-gradient(
+          135deg,
+          var(--tag-bg) 0%,
+          var(--surface2) 100%
+        );
         display: flex;
         align-items: center;
         justify-content: center;
@@ -265,8 +300,36 @@
         height: 10px;
         border-radius: 50%;
         background: #22c55e;
-        border: 2px solid #fff;
+        border: 2px solid var(--surface);
       }
+
+      /* SOCIAL LINKS */
+      .hero-social {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 14px;
+        border-radius: 8px;
+        border: 1.5px solid var(--border);
+        background: var(--surface);
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.15s;
+      }
+      .social-link:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .social-link i {
+        font-size: 16px;
+      }
+
       .hero-stats {
         display: flex;
         gap: 28px;
@@ -369,6 +432,22 @@
         background: #ede9fe;
         color: #6d28d9;
       }
+      html.dark .skill-icon.blue {
+        background: #1f3455;
+        color: #79c0ff;
+      }
+      html.dark .skill-icon.green {
+        background: #1a3a2a;
+        color: #56d364;
+      }
+      html.dark .skill-icon.amber {
+        background: #3a2a0a;
+        color: #e3b341;
+      }
+      html.dark .skill-icon.purple {
+        background: #2a1a4a;
+        color: #bc8cff;
+      }
       .skill-card-title {
         font-size: 13px;
         font-weight: 700;
@@ -407,7 +486,7 @@
           transform 0.2s;
       }
       .proj-card:hover {
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
         transform: translateY(-3px);
       }
       .proj-thumb {
@@ -430,7 +509,7 @@
         position: absolute;
         top: 11px;
         left: 11px;
-        background: #fff;
+        background: var(--surface);
         border: 1px solid var(--border);
         border-radius: 5px;
         font-size: 10px;
@@ -619,6 +698,7 @@
         justify-content: space-between;
         font-size: 13px;
         color: var(--muted);
+        transition: background 0.25s;
       }
       .footer-logo {
         display: flex;
@@ -727,14 +807,16 @@
           gap: 12px;
           text-align: center;
         }
+        .hero-social {
+          flex-wrap: wrap;
+        }
       }
     </style>
   </head>
   <body>
-    <!-- TOAST -->
     <div class="toast" id="toast"></div>
 
-    <!-- ===== NAV ===== -->
+    <!-- NAV -->
     <nav>
       <a href="#home" class="nav-logo">
         <div class="nav-logo-icon">JU</div>
@@ -742,19 +824,26 @@
       </a>
       <div class="nav-links">
         <a href="#home" class="hide-mobile" data-i18n="nav_home">Home</a>
-        <a href="#projects" class="hide-mobile" data-i18n="nav_projects"
+        <a href="projects.html" class="hide-mobile" data-i18n="nav_projects"
           >Projects</a
         >
         <a href="#about" class="hide-mobile" data-i18n="nav_about">About</a>
         <a href="#contact" class="nav-btn" data-i18n="nav_hire">Hire Me</a>
-        <button class="lang-btn" id="lang-btn">
+        <button
+          class="icon-btn theme-btn"
+          id="theme-btn"
+          title="Toggle dark mode"
+        >
+          <i class="bi bi-moon-fill" id="theme-icon"></i>
+        </button>
+        <button class="icon-btn" id="lang-btn">
           <i class="bi bi-globe2"></i>
           <span id="lang-label">ES</span>
         </button>
       </div>
     </nav>
 
-    <!-- ===== HERO ===== -->
+    <!-- HERO -->
     <section id="home">
       <div class="hero">
         <div>
@@ -772,43 +861,49 @@
             I specialize in crafting high-performance, modern web applications
             with a focus on clean aesthetics and intuitive user interactions.
           </p>
+
+          <!-- SOCIAL LINKS -->
+          <div class="hero-social fade-up d3">
+            <a
+              href="https://www.linkedin.com/in/jeeyson-mart%C3%ADnez-zeled%C3%B3n"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+            >
+              <i class="bi bi-linkedin"></i> LinkedIn
+            </a>
+            <a
+              href="https://github.com/MZJeey"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-link"
+            >
+              <i class="bi bi-github"></i> GitHub
+            </a>
+          </div>
+
           <div class="hero-actions fade-up d4">
-            <a href="#projects" class="btn-primary">
+            <a href="projects.html" class="btn-primary">
               <i class="bi bi-grid-3x3-gap-fill"></i>
               <span data-i18n="btn_work">View My Work</span>
             </a>
-            <!--
-          RESUME: Cuando tengas tu CV listo, sube el archivo como "resume.pdf"
-          a la misma carpeta del index.html y descomenta el enlace de abajo.
-          Luego borra el botón deshabilitado.
-        -->
-            <!-- <a href="resume.pdf" download class="btn-outline">
-          <i class="bi bi-file-earmark-arrow-down"></i>
-          <span data-i18n="btn_resume">Download CV</span>
-        </a> -->
-            <button
-              class="btn-outline disabled"
-              title="CV próximamente"
-              onclick="showToast('CV coming soon / CV próximamente 🚀')"
-            >
-              <i class="bi bi-file-earmark-person"></i>
+            <a href="Jeeyson_Martinez_CV.pdf" download class="btn-outline">
+              <i class="bi bi-file-earmark-arrow-down"></i>
               <span data-i18n="btn_resume">Resume</span>
-            </button>
+            </a>
           </div>
           <div class="hero-stats fade-up d4">
             <div class="stat">
-              <span class="stat-num">3+</span
-              ><span class="stat-label" data-i18n="stat_projects"
-                >Projects</span
-              >
+              <span class="stat-num">4+</span>
+              <span class="stat-label" data-i18n="stat_projects">Projects</span>
             </div>
             <div class="stat">
-              <span class="stat-num">2+</span
-              ><span class="stat-label" data-i18n="stat_years">Years</span>
+              <span class="stat-num">2+</span>
+              <span class="stat-label" data-i18n="stat_years">Years</span>
             </div>
             <div class="stat">
-              <span class="stat-num">CR</span
-              ><span class="stat-label" data-i18n="stat_country"
+              <span class="stat-num">CR</span>
+              <span class="stat-label" data-i18n="stat_country"
                 >Costa Rica</span
               >
             </div>
@@ -816,10 +911,7 @@
         </div>
         <div class="hero-avatar fade-up d3">
           <div class="avatar-frame">
-            <!--
-          FOTO: Sube tu foto como "img/foto.jpg" y descomenta la línea de abajo.
-          <img src="img/foto.jpg" alt="Jeeyson"/>
-        -->
+            <!-- <img src="img/foto.jpg" alt="Jeeyson"/> -->
             <span class="avatar-initials">JU</span>
             <div class="avatar-dot"></div>
           </div>
@@ -827,7 +919,7 @@
       </div>
     </section>
 
-    <!-- ===== SKILLS ===== -->
+    <!-- SKILLS -->
     <section id="skills">
       <div class="section" style="padding-top: 0">
         <div class="section-header">
@@ -896,7 +988,7 @@
       </div>
     </section>
 
-    <!-- ===== PROJECTS ===== -->
+    <!-- PROJECTS -->
     <section id="projects">
       <div class="section" style="padding-top: 0">
         <div class="section-header">
@@ -908,13 +1000,12 @@
               A selection of my recent academic & personal work
             </div>
           </div>
-          <a href="projects.html" class="view-all"
-            ><span data-i18n="view_all">View All</span>
-            <i class="bi bi-arrow-right"></i
-          ></a>
+          <a href="projects.html" class="view-all">
+            <span data-i18n="view_all">View All</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
         </div>
         <div class="projects-grid">
-          <!-- Project 1: Gold Fishing -->
           <div class="proj-card">
             <a
               href="https://goldfishing.netlify.app/"
@@ -936,8 +1027,8 @@
             <div class="proj-body">
               <div class="proj-title">Gold Fishing</div>
               <p class="proj-desc" data-i18n="proj1_desc">
-                E-commerce especializado en artículos de pesca con una
-                experiencia de compra moderna e intuitiva.
+                Specialized e-commerce for fishing gear with a modern and
+                intuitive shopping experience.
               </p>
               <div class="tags">
                 <span class="tag">HTML</span><span class="tag">CSS</span
@@ -949,13 +1040,11 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span data-i18n="explore">Explore Project</span>
-                <i class="bi bi-arrow-up-right"></i>
+                <span data-i18n="explore">Explore Project</span
+                ><i class="bi bi-arrow-up-right"></i>
               </a>
             </div>
           </div>
-
-          <!-- Project 2: Techno & EDM Festival -->
           <div class="proj-card">
             <a
               href="https://gregarious-jalebi-602383.netlify.app/"
@@ -977,8 +1066,8 @@
             <div class="proj-body">
               <div class="proj-title">Techno & EDM Festival</div>
               <p class="proj-desc" data-i18n="proj2_desc">
-                Landing page para festival de música electrónica con diseño
-                vibrante y moderna experiencia de usuario.
+                Landing page for an electronic music festival with vibrant
+                design and modern user experience.
               </p>
               <div class="tags">
                 <span class="tag">HTML</span><span class="tag">CSS</span
@@ -990,13 +1079,11 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span data-i18n="explore">Explore Project</span>
-                <i class="bi bi-arrow-up-right"></i>
+                <span data-i18n="explore">Explore Project</span
+                ><i class="bi bi-arrow-up-right"></i>
               </a>
             </div>
           </div>
-
-          <!-- Project 3: Pasentry -->
           <div class="proj-card">
             <a
               href="https://pasentry.netlify.app/sugerir-empresa"
@@ -1018,8 +1105,8 @@
             <div class="proj-body">
               <div class="proj-title">Pasentry</div>
               <p class="proj-desc" data-i18n="proj3_desc">
-                Plataforma SaaS que permite a usuarios sugerir empresas para
-                crear listados en el directorio.
+                SaaS platform that lets users suggest companies to create
+                listings in the directory.
               </p>
               <div class="tags">
                 <span class="tag">SaaS</span><span class="tag">UI/UX</span
@@ -1031,13 +1118,11 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span data-i18n="explore">Explore Project</span>
-                <i class="bi bi-arrow-up-right"></i>
+                <span data-i18n="explore">Explore Project</span
+                ><i class="bi bi-arrow-up-right"></i>
               </a>
             </div>
           </div>
-
-          <!-- Project 4: PlanillaRH -->
           <div class="proj-card">
             <a
               href="https://app-planilla.vercel.app/"
@@ -1059,8 +1144,8 @@
             <div class="proj-body">
               <div class="proj-title">PlanillaRH</div>
               <p class="proj-desc" data-i18n="proj4_desc">
-                Sistema integral de gestión de planillas, asistencia y recursos
-                humanos con control de accesos por rol.
+                Comprehensive HR management system for payroll, attendance and
+                human resources with role-based access control.
               </p>
               <div class="tags">
                 <span class="tag">Angular</span><span class="tag">Node.js</span
@@ -1072,8 +1157,8 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span data-i18n="explore">Explore Project</span>
-                <i class="bi bi-arrow-up-right"></i>
+                <span data-i18n="explore">Explore Project</span
+                ><i class="bi bi-arrow-up-right"></i>
               </a>
             </div>
           </div>
@@ -1081,7 +1166,7 @@
       </div>
     </section>
 
-    <!-- ===== ABOUT ===== -->
+    <!-- ABOUT -->
     <section id="about">
       <div class="section" style="padding-top: 0">
         <div class="section-header">
@@ -1110,20 +1195,40 @@
             </div>
             <div class="about-list">
               <div class="about-item">
-                <i class="bi bi-geo-alt-fill"></i>
-                <span data-i18n="about_location">Costa Rica</span>
+                <i class="bi bi-geo-alt-fill"></i
+                ><span data-i18n="about_location">Costa Rica</span>
               </div>
               <div class="about-item">
-                <i class="bi bi-mortarboard-fill"></i>
-                <span data-i18n="about_edu">Engineering Student</span>
+                <i class="bi bi-mortarboard-fill"></i
+                ><span data-i18n="about_edu">Engineering Student</span>
               </div>
               <div class="about-item">
-                <i class="bi bi-translate"></i>
-                <span data-i18n="about_lang">Spanish & English</span>
+                <i class="bi bi-translate"></i
+                ><span data-i18n="about_lang">Spanish & English</span>
               </div>
               <div class="about-item">
-                <i class="bi bi-clock-fill"></i>
-                <span data-i18n="about_avail">Available for freelance</span>
+                <i class="bi bi-clock-fill"></i
+                ><span data-i18n="about_avail">Available for freelance</span>
+              </div>
+              <div class="about-item">
+                <i class="bi bi-linkedin"></i>
+                <a
+                  href="https://www.linkedin.com/in/jeeyson-mart%C3%ADnez-zeled%C3%B3n"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="color: var(--accent); font-weight: 600"
+                  >Jeeyson Martínez</a
+                >
+              </div>
+              <div class="about-item">
+                <i class="bi bi-github"></i>
+                <a
+                  href="https://github.com/MZJeey"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="color: var(--accent); font-weight: 600"
+                  >MZJeey</a
+                >
               </div>
             </div>
           </div>
@@ -1133,20 +1238,20 @@
             </div>
             <div class="about-list">
               <div class="about-item">
-                <i class="bi bi-palette2"></i>
-                <span data-i18n="int1">UI/UX Design</span>
+                <i class="bi bi-palette2"></i
+                ><span data-i18n="int1">UI/UX Design</span>
               </div>
               <div class="about-item">
-                <i class="bi bi-phone"></i>
-                <span data-i18n="int2">Mobile-first Development</span>
+                <i class="bi bi-phone"></i
+                ><span data-i18n="int2">Mobile-first Development</span>
               </div>
               <div class="about-item">
-                <i class="bi bi-lightning-charge-fill"></i>
-                <span data-i18n="int3">Performance Optimization</span>
+                <i class="bi bi-lightning-charge-fill"></i
+                ><span data-i18n="int3">Performance Optimization</span>
               </div>
               <div class="about-item">
-                <i class="bi bi-people-fill"></i>
-                <span data-i18n="int4">Open Source</span>
+                <i class="bi bi-people-fill"></i
+                ><span data-i18n="int4">Open Source</span>
               </div>
             </div>
           </div>
@@ -1154,7 +1259,7 @@
       </div>
     </section>
 
-    <!-- ===== CONTACT ===== -->
+    <!-- CONTACT -->
     <section id="contact">
       <div class="section" style="padding-top: 0">
         <div class="contact-box">
@@ -1181,12 +1286,20 @@
             >
               <i class="bi bi-whatsapp"></i> WhatsApp
             </a>
+            <a
+              class="btn-ghost"
+              href="https://www.linkedin.com/in/jeeyson-mart%C3%ADnez-zeled%C3%B3n"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="bi bi-linkedin"></i> LinkedIn
+            </a>
           </div>
           <div class="contact-chips">
             <div class="contact-chip">
               <i class="bi bi-envelope"></i>
               <a
-                href="mailto:jasonezezel@gmail.com?subject=Freelance%20%2F%20Collaboration&body=Hi%20Jeeyson%2C%20I%20would%20like%20to%20talk%20about..."
+                href="mailto:jasonezezel@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 >jasonezezel@gmail.com</a
@@ -1195,10 +1308,19 @@
             <div class="contact-chip">
               <i class="bi bi-whatsapp"></i>
               <a
-                href="https://wa.me/50671795695?text=Hola%20Jeeyson%2C%20quiero%20cotizar%20un%20proyecto."
+                href="https://wa.me/50671795695"
                 target="_blank"
                 rel="noopener noreferrer"
                 >+506 7179 5695</a
+              >
+            </div>
+            <div class="contact-chip">
+              <i class="bi bi-github"></i>
+              <a
+                href="https://github.com/MZJeey"
+                target="_blank"
+                rel="noopener noreferrer"
+                >github.com/MZJeey</a
               >
             </div>
           </div>
@@ -1206,7 +1328,7 @@
       </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- FOOTER -->
     <footer>
       <a href="#home" class="footer-logo">
         <div
@@ -1223,21 +1345,33 @@
       >
       <div class="footer-icon-links">
         <a
-          href="mailto:jasonezezel@gmail.com?subject=Freelance%20%2F%20Collaboration&body=Hi%20Jeeyson%2C%20I%20would%20like%20to%20talk%20about..."
+          href="https://www.linkedin.com/in/jeeyson-mart%C3%ADnez-zeled%C3%B3n"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="LinkedIn"
+          ><i class="bi bi-linkedin"></i
+        ></a>
+        <a
+          href="https://github.com/MZJeey"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="GitHub"
+          ><i class="bi bi-github"></i
+        ></a>
+        <a
+          href="mailto:jasonezezel@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
           title="Email"
-        >
-          <i class="bi bi-envelope"></i>
-        </a>
+          ><i class="bi bi-envelope"></i
+        ></a>
         <a
-          href="https://wa.me/50671795695?text=Hola%20Jeeyson%2C%20quiero%20cotizar%20un%20proyecto."
+          href="https://wa.me/50671795695"
           target="_blank"
           rel="noopener noreferrer"
           title="WhatsApp"
-        >
-          <i class="bi bi-whatsapp"></i>
-        </a>
+          ><i class="bi bi-whatsapp"></i
+        ></a>
         <a href="#home" title="Back to top"
           ><i class="bi bi-arrow-up-circle"></i
         ></a>
@@ -1252,6 +1386,51 @@
         t.classList.add("show");
         setTimeout(() => t.classList.remove("show"), 3000);
       }
+
+      // ===== DARK MODE =====
+      const themeBtn = document.getElementById("theme-btn");
+      const themeIcon = document.getElementById("theme-icon");
+      const html = document.documentElement;
+
+      function getSystemTheme() {
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+
+      function applyTheme(theme) {
+        html.classList.toggle("dark", theme === "dark");
+        themeIcon.className =
+          theme === "dark" ? "bi bi-sun-fill" : "bi bi-moon-fill";
+        try {
+          localStorage.setItem("portfolio_theme", theme);
+        } catch (e) {}
+      }
+
+      // Init theme: saved preference OR system
+      (function initTheme() {
+        let saved;
+        try {
+          saved = localStorage.getItem("portfolio_theme");
+        } catch (e) {}
+        applyTheme(saved || getSystemTheme());
+      })();
+
+      // Toggle on click
+      themeBtn.addEventListener("click", () => {
+        applyTheme(html.classList.contains("dark") ? "light" : "dark");
+      });
+
+      // Listen to system changes (when no manual override… optional: always follow system)
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          let saved;
+          try {
+            saved = localStorage.getItem("portfolio_theme");
+          } catch (e2) {}
+          if (!saved) applyTheme(e.matches ? "dark" : "light");
+        });
 
       // ===== TRANSLATIONS =====
       const i18n = {
@@ -1369,7 +1548,6 @@
       };
 
       let currentLang = "en";
-
       function applyLang(lang) {
         currentLang = lang;
         document.documentElement.lang = lang;
@@ -1388,7 +1566,6 @@
         applyLang(currentLang === "en" ? "es" : "en");
       });
 
-      // Init language
       (function init() {
         let lang = "en";
         try {
